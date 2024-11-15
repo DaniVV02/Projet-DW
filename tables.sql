@@ -271,12 +271,12 @@ CREATE TABLE Session_Perf (
     IdSession NUMBER PRIMARY KEY,
     Duree_Session NUMBER,
     Modes_Jeu_Joues VARCHAR2(50),
-    Brawlers_joués VARCHAR2(50),
-    Trophées_gagnés_total NUMBER,
-    Trophées_perdus_total NUMBER,
-    Points_gagnés_rank_total NUMBER,
+    Brawlers_joues VARCHAR2(50),
+    Trophees_gagnes_total NUMBER,
+    Trophees_perdus_total NUMBER,
+    Points_gagnes_rank_total NUMBER,
     Points_perdus_rank_total NUMBER,
-    Rang_gagnés NUMBER
+    Rang_gagnes NUMBER
 );
 --Dimension Date
 CREATE TABLE Date_Perf (
@@ -300,7 +300,7 @@ CREATE TABLE ModeJeu (
 CREATE TABLE NiveauJoueur(
     IdNiveauJoueur NUMBER PRIMARY KEY,
     TypeJoueur VARCHAR2(50),
-    NiveauJoueur NUMBER,
+    NiveauJoueur NUMBER
 );
 
 CREATE TABLE PerfPersonnage (
@@ -314,12 +314,11 @@ CREATE TABLE PerfPersonnage (
     Degats_Totaux NUMBER,
     Pick_Rate NUMBER,
     Taux_ban NUMBER,
-    CONSTRAINT pk_perf PRIMARY KEY (IdBrawler, IdJoueur, IdSession, IdMode, IdDate),
+    CONSTRAINT pk_perf PRIMARY KEY (IdBrawler, IdNiveauJoueur, IdSession, IdMode, IdDate),
     CONSTRAINT fk_perf_brawler FOREIGN KEY (IdBrawler) REFERENCES Brawler(IdBrawler),
-    CONSTRAINT fk_perf_joueur FOREIGN KEY (IdJoueur) REFERENCES Joueur(IdJoueur),
-    CONSTRAINT fk_perf_session FOREIGN KEY (IdSession) REFERENCES Session(IdSession),
+    CONSTRAINT fk_perf_session FOREIGN KEY (IdSession) REFERENCES Session_Perf(IdSession),
     CONSTRAINT fk_perf_mode FOREIGN KEY (IdMode) REFERENCES ModeJeu(IdMode),
-    CONSTRAINT fk_perf_date FOREIGN KEY (IdDate) REFERENCES Date(IdDate),
+    CONSTRAINT fk_perf_date FOREIGN KEY (IdDate) REFERENCES Date_Perf(IdDate),
     CONSTRAINT fk_perf_niveaujoueur FOREIGN KEY (IdNiveauJoueur) REFERENCES NiveauJoueur(IdNiveauJoueur)
 );
 
