@@ -1,3 +1,157 @@
+PROMPT "Suppression des relations existantes"
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE Achats';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE Joueurs';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE Evenement';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE Produit';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE Date_Achats';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE Promotion';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE Temps';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE TypeProduit';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE Session_Achats';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;    
+/
+
+------------------------------------------------------------------------------------------------
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE PerfPersonnage';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE Brawler';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE Session_Perf';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE Date_Perf';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE ModeJeu';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE NiveauJoueur';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/
+------------------------------------------------------------------------------------------------
+
 -- Table des faits Achats
 CREATE TABLE Achats (
     IdProduit NUMBER,
@@ -15,7 +169,7 @@ CREATE TABLE Achats (
     CONSTRAINT fk_achats_joueurs FOREIGN KEY (IdJoueurs) REFERENCES Joueurs(IdJoueurs),
     CONSTRAINT fk_achats_evenement FOREIGN KEY (IdEvenement) REFERENCES Evenement(IdEvenement),
     CONSTRAINT fk_achats_produit FOREIGN KEY (IdProduit) REFERENCES Produit(IdProduit),
-    CONSTRAINT fk_achats_date FOREIGN KEY (IdDate) REFERENCES Date_Dim(IdDate),
+    CONSTRAINT fk_achats_date FOREIGN KEY (IdDate) REFERENCES Date_Achats(IdDate),
     CONSTRAINT fk_achats_promotion FOREIGN KEY (IdPromotion) REFERENCES Promotion(IdPromotion),
     CONSTRAINT fk_achats_type_produit FOREIGN KEY (IdTypeProduit) REFERENCES TypeProduit(IdTypeProduit),
     CONSTRAINT fk_achats_temps FOREIGN KEY (IdTemps) REFERENCES Temps(IdTemps)
@@ -71,25 +225,25 @@ CREATE TABLE Promotion (
     Popularite NUMBER
 );
 --Dimension Session
-CREATE TABLE Session (
+CREATE TABLE Session_Achats (
     IdSession NUMBER PRIMARY KEY,
     Duree NUMBER,
     Heure_debut DATE,
     Heure_fin DATE,
     Type_session VARCHAR2(50),
     Nombre_parties NUMBER,
-    Achats_effectues NUMBER,
+    Achats_effectues NUMBER
 );
 --Dimensions Temps
 CREATE TABLE Temps (
     IdTemps NUMBER PRIMARY KEY,
     Heure DATE,
-    AM/PM_indicator VARCHAR2(50),
+    AM_PM_indicator VARCHAR2(50)
 );
 --Dimension TypeProduit
 CREATE TABLE TypeProduit (
     IdTypeProduit NUMBER PRIMARY KEY,
-    TypeProduit VARCHAR2(50),
+    TypeProduit VARCHAR2(50)
 );
 
 --------------------------------------------------------------------------------------------------------------------------------------
@@ -130,7 +284,7 @@ CREATE TABLE Brawler (
     Rang_ulti NUMBER
 );
 --Dimension Session
-CREATE TABLE Session (
+CREATE TABLE Session_Perf (
     IdSession NUMBER PRIMARY KEY,
     Duree_Session NUMBER,
     Modes_Jeu_Joues VARCHAR2(50),
@@ -142,7 +296,7 @@ CREATE TABLE Session (
     Rang_gagnés NUMBER
 );
 --Dimension Date
-CREATE TABLE Date (
+CREATE TABLE Date_Perf (
     IdDate NUMBER PRIMARY KEY,
     Date DATE,
     Jour NUMBER,
@@ -160,10 +314,10 @@ CREATE TABLE ModeJeu (
     Popularite NUMBER
 );
 --Dimension NiveauJoueur
-CREATE TABLE NiveauJoueur{
+CREATE TABLE NiveauJoueur(
     IdNiveauJoueur NUMBER PRIMARY KEY,
     TypeJoueur VARCHAR2(50),
     NiveauJoueur NUMBER,
-}
+);
 
 
