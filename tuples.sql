@@ -69,16 +69,16 @@ INSERT INTO Date_Achats VALUES (10, DATE '2024-11-01', 1, 11, 2024, 'Non', 'Auto
 
 
 -- Insertion dans la table Session
-INSERT INTO Session VALUES (1, 180, DATE '2024-11-10 14:00', DATE '2024-11-10 17:00', 'Session Longue', 10, 3);
-INSERT INTO Session VALUES (2, 45, DATE '2024-11-10 18:00', DATE '2024-11-10 18:45', 'Session Courte', 2, 0);
-INSERT INTO Session VALUES (3, 90, DATE '2024-11-10 19:00', DATE '2024-11-10 20:30', 'Session Moyenne', 5, 2);
-INSERT INTO Session VALUES (4, 60, DATE '2024-11-11 12:00', DATE '2024-11-11 13:00', 'Session Courte', 3, 1);
-INSERT INTO Session VALUES (5, 240, DATE '2024-11-12 14:00', DATE '2024-11-12 18:00', 'Session Très Longue', 15, 6);
-INSERT INTO Session VALUES (6, 30, DATE '2024-11-12 20:00', DATE '2024-11-12 20:30', 'Session Très Courte', 1, 0);
-INSERT INTO Session VALUES (7, 150, DATE '2024-11-13 16:00', DATE '2024-11-13 18:30', 'Session Longue', 8, 3);
-INSERT INTO Session VALUES (8, 75, DATE '2024-11-13 10:00', DATE '2024-11-13 11:15', 'Session Moyenne', 4, 1);
-INSERT INTO Session VALUES (9, 20, DATE '2024-11-13 21:00', DATE '2024-11-13 21:20', 'Session Flash', 1, 0);
-INSERT INTO Session VALUES (10, 120, DATE '2024-11-14 09:00', DATE '2024-11-14 11:00', 'Session Longue', 7, 5);
+INSERT INTO Session_Achats VALUES (1, 180, DATE '2024-11-10 14:00', DATE '2024-11-10 17:00', 'Session Longue', 10, 3);
+INSERT INTO Session_Achats VALUES (2, 45, DATE '2024-11-10 18:00', DATE '2024-11-10 18:45', 'Session Courte', 2, 0);
+INSERT INTO Session_Achats VALUES (3, 90, DATE '2024-11-10 19:00', DATE '2024-11-10 20:30', 'Session Moyenne', 5, 2);
+INSERT INTO Session_Achats VALUES (4, 60, DATE '2024-11-11 12:00', DATE '2024-11-11 13:00', 'Session Courte', 3, 1);
+INSERT INTO Session_Achats VALUES (5, 240, DATE '2024-11-12 14:00', DATE '2024-11-12 18:00', 'Session Très Longue', 15, 6);
+INSERT INTO Session_Achats VALUES (6, 30, DATE '2024-11-12 20:00', DATE '2024-11-12 20:30', 'Session Très Courte', 1, 0);
+INSERT INTO Session_Achats VALUES (7, 150, DATE '2024-11-13 16:00', DATE '2024-11-13 18:30', 'Session Longue', 8, 3);
+INSERT INTO Session_Achats VALUES (8, 75, DATE '2024-11-13 10:00', DATE '2024-11-13 11:15', 'Session Moyenne', 4, 1);
+INSERT INTO Session_Achats VALUES (9, 20, DATE '2024-11-13 21:00', DATE '2024-11-13 21:20', 'Session Flash', 1, 0);
+INSERT INTO Session_Achats VALUES (10, 120, DATE '2024-11-14 09:00', DATE '2024-11-14 11:00', 'Session Longue', 7, 5);
 
 
 
@@ -130,18 +130,6 @@ INSERT INTO Achats VALUES (10, 10, 10, 10, 10, 10, 10, 10, 29.99, 3, 'Pack d’O
 
 
 ----------  DATA MART 2 -------------------------
-
--- PerfPersonnage : performances des brawlers par session, joueur, mode et date
-INSERT INTO PerfPersonnage VALUES (1, 3, 1, 1, 1, 0.65, 0.20, 30000, 0.22, 0.05);
-INSERT INTO PerfPersonnage VALUES (2, 2, 2, 2, 2, 0.45, 0.12, 20000, 0.15, 0.10);
-INSERT INTO PerfPersonnage VALUES (3, 1, 3, 3, 3, 0.80, 0.35, 50000, 0.40, 0.02);
-INSERT INTO PerfPersonnage VALUES (4, 4, 4, 4, 4, 0.30, 0.05, 10000, 0.05, 0.15);
-INSERT INTO PerfPersonnage VALUES (5, 5, 5, 5, 5, 0.75, 0.28, 40000, 0.30, 0.03);
-INSERT INTO PerfPersonnage VALUES (6, 2, 6, 1, 6, 0.55, 0.18, 25000, 0.20, 0.08);
-INSERT INTO PerfPersonnage VALUES (7, 3, 7, 2, 7, 0.85, 0.40, 60000, 0.45, 0.01);
-INSERT INTO PerfPersonnage VALUES (8, 1, 8, 3, 8, 0.40, 0.10, 15000, 0.10, 0.12);
-INSERT INTO PerfPersonnage VALUES (9, 4, 9, 4, 9, 0.25, 0.03, 8000, 0.03, 0.20);
-INSERT INTO PerfPersonnage VALUES (10, 5, 10, 5, 10, 0.90, 0.50, 70000, 0.50, 0.01);
 
 INSERT INTO Brawler VALUES (1, 'Shelly', 'Commune', 'Combattant', DATE '2017-06-15', 3600, 720, 'Vitesse de tir rapide', 5.0, 10, 3.0, 1200, 8);
 INSERT INTO Brawler VALUES (2, 'Colt', 'Rare', 'Tireur', DATE '2017-06-15', 2800, 820, 'Vitesse de déplacement rapide', 7.0, 15, 4.5, 1000, 12);
@@ -197,3 +185,16 @@ INSERT INTO NiveauJoueur VALUES (2, 'Joueur Intermédiaire', 2);
 INSERT INTO NiveauJoueur VALUES (3, 'Joueur Avancé', 3);
 INSERT INTO NiveauJoueur VALUES (4, 'Joueur Expert', 4);
 INSERT INTO NiveauJoueur VALUES (5, 'Joueur Maître', 5);
+
+
+-- PerfPersonnage : performances des brawlers par session, joueur, mode et date
+INSERT INTO PerfPersonnage VALUES (1, 3, 1, 1, 1, 0.65, 0.20, 30000, 0.22, 0.05);
+INSERT INTO PerfPersonnage VALUES (2, 2, 2, 2, 2, 0.45, 0.12, 20000, 0.15, 0.10);
+INSERT INTO PerfPersonnage VALUES (3, 1, 3, 3, 3, 0.80, 0.35, 50000, 0.40, 0.02);
+INSERT INTO PerfPersonnage VALUES (4, 4, 4, 4, 4, 0.30, 0.05, 10000, 0.05, 0.15);
+INSERT INTO PerfPersonnage VALUES (5, 5, 5, 5, 5, 0.75, 0.28, 40000, 0.30, 0.03);
+INSERT INTO PerfPersonnage VALUES (6, 2, 6, 1, 6, 0.55, 0.18, 25000, 0.20, 0.08);
+INSERT INTO PerfPersonnage VALUES (7, 3, 7, 2, 7, 0.85, 0.40, 60000, 0.45, 0.01);
+INSERT INTO PerfPersonnage VALUES (8, 1, 8, 3, 8, 0.40, 0.10, 15000, 0.10, 0.12);
+INSERT INTO PerfPersonnage VALUES (9, 4, 9, 4, 9, 0.25, 0.03, 8000, 0.03, 0.20);
+INSERT INTO PerfPersonnage VALUES (10, 5, 10, 5, 10, 0.90, 0.50, 70000, 0.50, 0.01);
