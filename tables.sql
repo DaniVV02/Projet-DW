@@ -6,14 +6,19 @@ CREATE TABLE Achats (
     IdPromotion NUMBER,
     IdDate NUMBER,
     IdSession NUMBER,
+    IdTypeProduit NUMBER,
+    IdTemps NUMBER,
     Montant_achat NUMBER(10, 2), -- Montant total de l'achat
     Nombre_achats NUMBER,
     Type_achat VARCHAR2(50),
+    CONSTRAINT pk_achats PRIMARY KEY (IdProduit, IdJoueurs, IdEvenement, IdPromotion, IdDate, IdSession, IdTypeProduit),
     CONSTRAINT fk_achats_joueurs FOREIGN KEY (IdJoueurs) REFERENCES Joueurs(IdJoueurs),
     CONSTRAINT fk_achats_evenement FOREIGN KEY (IdEvenement) REFERENCES Evenement(IdEvenement),
     CONSTRAINT fk_achats_produit FOREIGN KEY (IdProduit) REFERENCES Produit(IdProduit),
     CONSTRAINT fk_achats_date FOREIGN KEY (IdDate) REFERENCES Date_Dim(IdDate),
-    CONSTRAINT fk_achats_promotion FOREIGN KEY (IdPromotion) REFERENCES Promotion(IdPromotion)
+    CONSTRAINT fk_achats_promotion FOREIGN KEY (IdPromotion) REFERENCES Promotion(IdPromotion),
+    CONSTRAINT fk_achats_type_produit FOREIGN KEY (IdTypeProduit) REFERENCES TypeProduit(IdTypeProduit),
+    CONSTRAINT fk_achats_temps FOREIGN KEY (IdTemps) REFERENCES Temps(IdTemps)
 );
 
 
@@ -41,12 +46,11 @@ CREATE TABLE Produit (
     Nom_Produit VARCHAR2(100),
     Prix_unitaire NUMBER(10, 2), -- Prix unitaire avec 2 décimales
     Categorie VARCHAR2(50),
-    Popularite NUMBER,
-    Type_produit VARCHAR2(50)
+    Popularite NUMBER
 );
 
 -- Dimension Date
-CREATE TABLE Date_Dim (
+CREATE TABLE Date_Achats (
     IdDate NUMBER PRIMARY KEY,
     Date DATE,
     Jour NUMBER,
@@ -66,12 +70,33 @@ CREATE TABLE Promotion (
     Frequence VARCHAR2(50),
     Popularite NUMBER
 );
+--Dimension Session
+CREATE TABLE Session (
+    IdSession NUMBER PRIMARY KEY,
+    Duree NUMBER,
+    Heure_debut DATE,
+    Heure_fin DATE,
+    Type_session VARCHAR2(50),
+    Nombre_parties NUMBER,
+    Achats_effectues NUMBER,
+);
+--Dimensions Temps
+CREATE TABLE Temps (
+    IdTemps NUMBER PRIMARY KEY,
+    Heure DATE,
+    AM/PM_indicator VARCHAR2(50),
+);
+--Dimension TypeProduit
+CREATE TABLE TypeProduit (
+    IdTypeProduit NUMBER PRIMARY KEY,
+    TypeProduit VARCHAR2(50),
+);
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE PerfPersonnage (
     IdBrawler NUMBER,
-    IdJoueur NUMBER,
+    IdNiveauJoueur NUMBER,
     IdSession NUMBER,
     IdMode NUMBER,
     IdDate NUMBER,
@@ -79,15 +104,14 @@ CREATE TABLE PerfPersonnage (
     Frequence_Utilisation NUMBER,
     Degats_Totaux NUMBER,
     Pick_Rate NUMBER,
-    Taux_mvp NUMBER,
-    Resultat_match VARCHAR2(50),
-    Win_streak NUMBER,
     Taux_ban NUMBER,
+    CONSTRAINT pk_perf PRIMARY KEY (IdBrawler, IdJoueur, IdSession, IdMode, IdDate),
     CONSTRAINT fk_perf_brawler FOREIGN KEY (IdBrawler) REFERENCES Brawler(IdBrawler),
     CONSTRAINT fk_perf_joueur FOREIGN KEY (IdJoueur) REFERENCES Joueur(IdJoueur),
     CONSTRAINT fk_perf_session FOREIGN KEY (IdSession) REFERENCES Session(IdSession),
     CONSTRAINT fk_perf_mode FOREIGN KEY (IdMode) REFERENCES ModeJeu(IdMode),
-    CONSTRAINT fk_perf_date FOREIGN KEY (IdDate) REFERENCES Date(IdDate)
+    CONSTRAINT fk_perf_date FOREIGN KEY (IdDate) REFERENCES Date(IdDate),
+    CONSTRAINT fk_perf_niveaujoueur FOREIGN KEY (IdNiveauJoueur) REFERENCES NiveauJoueur(IdNiveauJoueur)
 );
 --Dimension Brawler
 CREATE TABLE Brawler (
@@ -110,9 +134,9 @@ CREATE TABLE Session (
     IdSession NUMBER PRIMARY KEY,
     Duree_Session NUMBER,
     Modes_Jeu_Joues VARCHAR2(50),
+    Brawlers_joués VARCHAR2(50),
     Trophées_gagnés_total NUMBER,
     Trophées_perdus_total NUMBER,
-    Brawlers_joués VARCHAR2(50),
     Points_gagnés_rank_total NUMBER,
     Points_perdus_rank_total NUMBER,
     Rang_gagnés NUMBER
@@ -135,15 +159,11 @@ CREATE TABLE ModeJeu (
     Nom_map VARCHAR2(50),
     Popularite NUMBER
 );
---Dimension Joueur
-CREATE TABLE Joueur (
-    IdJoueur NUMBER PRIMARY KEY,
+--Dimension NiveauJoueur
+CREATE TABLE NiveauJoueur{
+    IdNiveauJoueur NUMBER PRIMARY KEY,
     TypeJoueur VARCHAR2(50),
-    Trophées NUMBER,
-    Rang_actuel NUMBER,
-    Rang_max NUMBER,
-    Date_inscription DATE,
-    Classement_local NUMBER,
-    Classement_mondial NUMBER
-);
+    NiveauJoueur NUMBER,
+}
+
 
