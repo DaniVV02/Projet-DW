@@ -55,44 +55,44 @@ INSERT INTO Promotion VALUES (10, 'Promo Nouvelle Année', 250, 35.00, 4, 'Annue
 
 
 -- Insertion dans la table Date_Achats
-INSERT INTO Date_Achats VALUES (1, DATE '2024-11-10', 10, 11, 2024, 'Non', 'Automne');
-INSERT INTO Date_Achats VALUES (2, DATE '2024-12-25', 25, 12, 2024, 'Oui', 'Hiver');
-INSERT INTO Date_Achats VALUES (3, DATE '2024-01-01', 1, 1, 2024, 'Oui', 'Hiver');
-INSERT INTO Date_Achats VALUES (4, DATE '2024-07-15', 15, 7, 2024, 'Non', 'Été');
-INSERT INTO Date_Achats VALUES (5, DATE '2024-03-20', 20, 3, 2024, 'Non', 'Printemps');
-INSERT INTO Date_Achats VALUES (6, DATE '2024-09-05', 5, 9, 2024, 'Non', 'Automne');
-INSERT INTO Date_Achats VALUES (7, DATE '2024-12-24', 24, 12, 2024, 'Oui', 'Hiver');
-INSERT INTO Date_Achats VALUES (8, DATE '2024-08-10', 10, 8, 2024, 'Non', 'Été');
-INSERT INTO Date_Achats VALUES (9, DATE '2024-05-01', 1, 5, 2024, 'Non', 'Printemps');
-INSERT INTO Date_Achats VALUES (10, DATE '2024-11-01', 1, 11, 2024, 'Non', 'Automne');
+INSERT INTO Date_Achats VALUES (1, TO_DATE('2024-11-10','YYYY-MM-DD'), 10, 11, 2024, 'Non', 'Automne');
+INSERT INTO Date_Achats VALUES (2, TO_DATE ('2024-12-25', 'YYYY-MM-DD'), 25, 12, 2024, 'Oui', 'Hiver');
+INSERT INTO Date_Achats VALUES (3, TO_DATE ('2024-01-01', 'YYYY-MM-DD') ,1, 1, 2024, 'Oui', 'Hiver');
+INSERT INTO Date_Achats VALUES (4, TO_DATE ('2024-07-15', 'YYYY-MM-DD') ,15, 7, 2024, 'Non', 'Été');
+INSERT INTO Date_Achats VALUES (5, TO_DATE ('2024-03-20', 'YYYY-MM-DD'),20, 3, 2024, 'Non', 'Printemps');
+INSERT INTO Date_Achats VALUES (6, TO_DATE ('2024-09-05', 'YYYY-MM-DD'),5, 9, 2024, 'Non', 'Automne');
+INSERT INTO Date_Achats VALUES (7, TO_DATE ('2024-12-24', 'YYYY-MM-DD'),24, 12, 2024, 'Oui', 'Hiver');
+INSERT INTO Date_Achats VALUES (8, TO_DATE ('2024-08-10', 'YYYY-MM-DD'),10, 8, 2024, 'Non', 'Été');
+INSERT INTO Date_Achats VALUES (9, TO_DATE ('2024-05-01', 'YYYY-MM-DD'),1, 5, 2024, 'Non', 'Printemps');
+INSERT INTO Date_Achats VALUES (10, TO_DATE ('2024-11-01', 'YYYY-MM-DD'),1, 11, 2024, 'Non', 'Automne');
 
 
 
 -- Insertion dans la table Session
-INSERT INTO Session_Achats VALUES (1, 180, DATE '2024-11-10 14:00', DATE '2024-11-10 17:00', 'Session Longue', 10, 3);
-INSERT INTO Session_Achats VALUES (2, 45, DATE '2024-11-10 18:00', DATE '2024-11-10 18:45', 'Session Courte', 2, 0);
-INSERT INTO Session_Achats VALUES (3, 90, DATE '2024-11-10 19:00', DATE '2024-11-10 20:30', 'Session Moyenne', 5, 2);
-INSERT INTO Session_Achats VALUES (4, 60, DATE '2024-11-11 12:00', DATE '2024-11-11 13:00', 'Session Courte', 3, 1);
-INSERT INTO Session_Achats VALUES (5, 240, DATE '2024-11-12 14:00', DATE '2024-11-12 18:00', 'Session Très Longue', 15, 6);
-INSERT INTO Session_Achats VALUES (6, 30, DATE '2024-11-12 20:00', DATE '2024-11-12 20:30', 'Session Très Courte', 1, 0);
-INSERT INTO Session_Achats VALUES (7, 150, DATE '2024-11-13 16:00', DATE '2024-11-13 18:30', 'Session Longue', 8, 3);
-INSERT INTO Session_Achats VALUES (8, 75, DATE '2024-11-13 10:00', DATE '2024-11-13 11:15', 'Session Moyenne', 4, 1);
-INSERT INTO Session_Achats VALUES (9, 20, DATE '2024-11-13 21:00', DATE '2024-11-13 21:20', 'Session Flash', 1, 0);
-INSERT INTO Session_Achats VALUES (10, 120, DATE '2024-11-14 09:00', DATE '2024-11-14 11:00', 'Session Longue', 7, 5);
+INSERT INTO Session_Achats VALUES (1, 180, TO_DATE('2024-11-10 14:00','YYYY-MM-DD'), TO_DATE( '2024-11-10 17:00','YYYY-MM-DD'), 'Session Longue', 10, 3);
+INSERT INTO Session_Achats VALUES (2, 45, TO_DATE( '2024-11-10 18:00', 'YYYY-MM-DD'),TO_DATE( '2024-11-10 18:45','YYYY-MM-DD'), 'Session Courte', 2, 0);
+INSERT INTO Session_Achats VALUES (3, 90, TO_DATE( '2024-11-10 19:00', 'YYYY-MM-DD'),TO_DATE( '2024-11-10 20:30','YYYY-MM-DD'), 'Session Moyenne', 5, 2);
+INSERT INTO Session_Achats VALUES (4, 60, TO_DATE( '2024-11-11 12:00','YYYY-MM-DD'), TO_DATE( '2024-11-11 13:00','YYYY-MM-DD'), 'Session Courte', 3, 1);
+INSERT INTO Session_Achats VALUES (5, 240, TO_DATE( '2024-11-12 14:00','YYYY-MM-DD'), TO_DATE( '2024-11-12 18:00','YYYY-MM-DD'), 'Session Très Longue', 15, 6);
+INSERT INTO Session_Achats VALUES (6, 30, TO_DATE( '2024-11-12 20:00', 'YYYY-MM-DD'),TO_DATE( '2024-11-12 20:30','YYYY-MM-DD'), 'Session Très Courte', 1, 0);
+INSERT INTO Session_Achats VALUES (7, 150, TO_DATE( '2024-11-13 16:00','YYYY-MM-DD'), TO_DATE( '2024-11-13 18:30','YYYY-MM-DD'), 'Session Longue', 8, 3);
+INSERT INTO Session_Achats VALUES (8, 75, TO_DATE( '2024-11-13 10:00', 'YYYY-MM-DD'),TO_DATE( '2024-11-13 11:15','YYYY-MM-DD'), 'Session Moyenne', 4, 1);
+INSERT INTO Session_Achats VALUES (9, 20, TO_DATE( '2024-11-13 21:00', 'YYYY-MM-DD'),TO_DATE( '2024-11-13 21:20','YYYY-MM-DD'), 'Session Flash', 1, 0);
+INSERT INTO Session_Achats VALUES (10, 120, TO_DATE( '2024-11-14 09:00', 'YYYY-MM-DD'),TO_DATE( '2024-11-14 11:00','YYYY-MM-DD'), 'Session Longue', 7, 5);
 
 
 
 -- Insertion dans la table Temps
-INSERT INTO Temps VALUES (1, DATE '2024-11-10 14:00', 'PM');
-INSERT INTO Temps VALUES (2, DATE '2024-11-10 18:00', 'PM');
-INSERT INTO Temps VALUES (3, DATE '2024-11-11 12:00', 'PM');
-INSERT INTO Temps VALUES (4, DATE '2024-11-12 14:00', 'PM');
-INSERT INTO Temps VALUES (5, DATE '2024-11-12 20:00', 'PM');
-INSERT INTO Temps VALUES (6, DATE '2024-11-13 16:00', 'PM');
-INSERT INTO Temps VALUES (7, DATE '2024-11-13 10:00', 'AM');
-INSERT INTO Temps VALUES (8, DATE '2024-11-13 21:00', 'PM');
-INSERT INTO Temps VALUES (9, DATE '2024-11-14 09:00', 'AM');
-INSERT INTO Temps VALUES (10, DATE '2024-11-14 11:00', 'AM');
+INSERT INTO Temps VALUES (1, TO_DATE('2024-11-10 14:00', 'YYYY-MM-DD'), 'PM');
+INSERT INTO Temps VALUES (2, TO_DATE( '2024-11-10 18:00', 'YYYY-MM-DD'), 'PM');
+INSERT INTO Temps VALUES (3, TO_DATE( '2024-11-11 12:00', 'YYYY-MM-DD'), 'PM');
+INSERT INTO Temps VALUES (4, TO_DATE( '2024-11-12 14:00', 'YYYY-MM-DD'), 'PM');
+INSERT INTO Temps VALUES (5, TO_DATE( '2024-11-12 20:00', 'YYYY-MM-DD'), 'PM');
+INSERT INTO Temps VALUES (6, TO_DATE( '2024-11-13 16:00', 'YYYY-MM-DD'), 'PM');
+INSERT INTO Temps VALUES (7, TO_DATE( '2024-11-13 10:00', 'YYYY-MM-DD'), 'AM');
+INSERT INTO Temps VALUES (8, TO_DATE( '2024-11-13 21:00', 'YYYY-MM-DD'), 'PM');
+INSERT INTO Temps VALUES (9, TO_DATE( '2024-11-14 09:00', 'YYYY-MM-DD'), 'AM');
+INSERT INTO Temps VALUES (10, TO_DATE( '2024-11-14 11:00', 'YYYY-MM-DD'), 'AM');
 
 
 -- Insertion dans la table TypeProduit
