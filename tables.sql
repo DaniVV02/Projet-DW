@@ -152,28 +152,6 @@ END;
 /
 ------------------------------------------------------------------------------------------------
 
--- Table des faits Achats
-CREATE TABLE Achats (
-    IdProduit NUMBER,
-    IdJoueurs NUMBER,
-    IdEvenement NUMBER,
-    IdPromotion NUMBER,
-    IdDate NUMBER,
-    IdSession NUMBER,
-    IdTypeProduit NUMBER,
-    IdTemps NUMBER,
-    Montant_achat NUMBER(10, 2), -- Montant total de l'achat
-    Nombre_achats NUMBER,
-    Type_achat VARCHAR2(50),
-    CONSTRAINT pk_achats PRIMARY KEY (IdProduit, IdJoueurs, IdEvenement, IdPromotion, IdDate, IdSession, IdTypeProduit),
-    CONSTRAINT fk_achats_joueurs FOREIGN KEY (IdJoueurs) REFERENCES Joueurs(IdJoueurs),
-    CONSTRAINT fk_achats_evenement FOREIGN KEY (IdEvenement) REFERENCES Evenement(IdEvenement),
-    CONSTRAINT fk_achats_produit FOREIGN KEY (IdProduit) REFERENCES Produit(IdProduit),
-    CONSTRAINT fk_achats_date FOREIGN KEY (IdDate) REFERENCES Date_Achats(IdDate),
-    CONSTRAINT fk_achats_promotion FOREIGN KEY (IdPromotion) REFERENCES Promotion(IdPromotion),
-    CONSTRAINT fk_achats_type_produit FOREIGN KEY (IdTypeProduit) REFERENCES TypeProduit(IdTypeProduit),
-    CONSTRAINT fk_achats_temps FOREIGN KEY (IdTemps) REFERENCES Temps(IdTemps)
-);
 
 
 -- Dimension Joueurs
@@ -206,7 +184,7 @@ CREATE TABLE Produit (
 -- Dimension Date
 CREATE TABLE Date_Achats (
     IdDate NUMBER PRIMARY KEY,
-    Date DATE,
+    Date_achats DATE,
     Jour NUMBER,
     Mois NUMBER,
     Annee NUMBER,
@@ -246,33 +224,38 @@ CREATE TABLE TypeProduit (
     TypeProduit VARCHAR2(50)
 );
 
+-- Table des faits Achats
+CREATE TABLE Achats (
+    IdProduit NUMBER,
+    IdJoueurs NUMBER,
+    IdEvenement NUMBER,
+    IdPromotion NUMBER,
+    IdDate NUMBER,
+    IdSession NUMBER,
+    IdTypeProduit NUMBER,
+    IdTemps NUMBER,
+    Montant_achat NUMBER(10, 2), -- Montant total de l'achat
+    Nombre_achats NUMBER,
+    Type_achat VARCHAR2(50),
+    CONSTRAINT pk_achats PRIMARY KEY (IdProduit, IdJoueurs, IdEvenement, IdPromotion, IdDate, IdSession, IdTypeProduit),
+    CONSTRAINT fk_achats_joueurs FOREIGN KEY (IdJoueurs) REFERENCES Joueurs(IdJoueurs),
+    CONSTRAINT fk_achats_evenement FOREIGN KEY (IdEvenement) REFERENCES Evenement(IdEvenement),
+    CONSTRAINT fk_achats_produit FOREIGN KEY (IdProduit) REFERENCES Produit(IdProduit),
+    CONSTRAINT fk_achats_date FOREIGN KEY (IdDate) REFERENCES Date_Achats(IdDate),
+    CONSTRAINT fk_achats_promotion FOREIGN KEY (IdPromotion) REFERENCES Promotion(IdPromotion),
+    CONSTRAINT fk_achats_type_produit FOREIGN KEY (IdTypeProduit) REFERENCES TypeProduit(IdTypeProduit),
+    CONSTRAINT fk_achats_temps FOREIGN KEY (IdTemps) REFERENCES Temps(IdTemps)
+);
+
 --------------------------------------------------------------------------------------------------------------------------------------
 
-CREATE TABLE PerfPersonnage (
-    IdBrawler NUMBER,
-    IdNiveauJoueur NUMBER,
-    IdSession NUMBER,
-    IdMode NUMBER,
-    IdDate NUMBER,
-    Taux_Victoire NUMBER,
-    Frequence_Utilisation NUMBER,
-    Degats_Totaux NUMBER,
-    Pick_Rate NUMBER,
-    Taux_ban NUMBER,
-    CONSTRAINT pk_perf PRIMARY KEY (IdBrawler, IdJoueur, IdSession, IdMode, IdDate),
-    CONSTRAINT fk_perf_brawler FOREIGN KEY (IdBrawler) REFERENCES Brawler(IdBrawler),
-    CONSTRAINT fk_perf_joueur FOREIGN KEY (IdJoueur) REFERENCES Joueur(IdJoueur),
-    CONSTRAINT fk_perf_session FOREIGN KEY (IdSession) REFERENCES Session(IdSession),
-    CONSTRAINT fk_perf_mode FOREIGN KEY (IdMode) REFERENCES ModeJeu(IdMode),
-    CONSTRAINT fk_perf_date FOREIGN KEY (IdDate) REFERENCES Date(IdDate),
-    CONSTRAINT fk_perf_niveaujoueur FOREIGN KEY (IdNiveauJoueur) REFERENCES NiveauJoueur(IdNiveauJoueur)
-);
+
 --Dimension Brawler
 CREATE TABLE Brawler (
     IdBrawler NUMBER PRIMARY KEY,
     Nom VARCHAR2(50),
     Rarete VARCHAR2(50),
-    Role VARCHAR2(50),
+    Role_brawler VARCHAR2(50),
     Date_Sortie DATE,
     Points_de_vie NUMBER,
     Vitesse NUMBER,
@@ -298,7 +281,7 @@ CREATE TABLE Session_Perf (
 --Dimension Date
 CREATE TABLE Date_Perf (
     IdDate NUMBER PRIMARY KEY,
-    Date DATE,
+    Date_p DATE,
     Jour NUMBER,
     Mois NUMBER,
     Annee NUMBER,
@@ -320,4 +303,23 @@ CREATE TABLE NiveauJoueur(
     NiveauJoueur NUMBER,
 );
 
+CREATE TABLE PerfPersonnage (
+    IdBrawler NUMBER,
+    IdNiveauJoueur NUMBER,
+    IdSession NUMBER,
+    IdMode NUMBER,
+    IdDate NUMBER,
+    Taux_Victoire NUMBER,
+    Frequence_Utilisation NUMBER,
+    Degats_Totaux NUMBER,
+    Pick_Rate NUMBER,
+    Taux_ban NUMBER,
+    CONSTRAINT pk_perf PRIMARY KEY (IdBrawler, IdJoueur, IdSession, IdMode, IdDate),
+    CONSTRAINT fk_perf_brawler FOREIGN KEY (IdBrawler) REFERENCES Brawler(IdBrawler),
+    CONSTRAINT fk_perf_joueur FOREIGN KEY (IdJoueur) REFERENCES Joueur(IdJoueur),
+    CONSTRAINT fk_perf_session FOREIGN KEY (IdSession) REFERENCES Session(IdSession),
+    CONSTRAINT fk_perf_mode FOREIGN KEY (IdMode) REFERENCES ModeJeu(IdMode),
+    CONSTRAINT fk_perf_date FOREIGN KEY (IdDate) REFERENCES Date(IdDate),
+    CONSTRAINT fk_perf_niveaujoueur FOREIGN KEY (IdNiveauJoueur) REFERENCES NiveauJoueur(IdNiveauJoueur)
+);
 
