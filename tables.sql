@@ -254,53 +254,53 @@ CREATE TABLE Achats (
 CREATE TABLE Brawler (
     IdBrawler NUMBER PRIMARY KEY,
     Nom VARCHAR2(50),
-    Rarete VARCHAR2(50),
-    Role_brawler VARCHAR2(50),
+    Rarete VARCHAR2(20),
+    Role VARCHAR2(20),
     Date_Sortie DATE,
-    Points_de_vie NUMBER,
-    Vitesse NUMBER,
+    Points_de_vie INT,
+    Vitesse FLOAT,
     Trait VARCHAR2(50),
-    Attaque_Par_Sec NUMBER,
-    Rang_attaque NUMBER,
-    Vitesse_recharge NUMBER,
-    Degats_ulti NUMBER,
-    Rang_ulti NUMBER
+    Attaque_Par_Sec FLOAT,
+    Rang_attaque INT,
+    Vitesse_recharge FLOAT,
+    Degats_ulti INT,
+    Rang_ulti INT
 );
 --Dimension Session
-CREATE TABLE Session_Perf (
+CREATE TABLE Session (
     IdSession NUMBER PRIMARY KEY,
-    Duree_Session NUMBER,
-    Modes_Jeu_Joues VARCHAR2(50),
-    Brawlers_joues VARCHAR2(50),
-    Trophees_gagnes_total NUMBER,
-    Trophees_perdus_total NUMBER,
-    Points_gagnes_rank_total NUMBER,
-    Points_perdus_rank_total NUMBER,
-    Rang_gagnes NUMBER
+    Duree_Session INTERVAL DAY TO SECOND,
+    Modes_Jeu_Joues VARCHAR2(100),
+    Brawlers_joues VARCHAR2(100),
+    Trophees_gagnes_total INT,
+    Trophees_perdus_total INT,
+    Points_gagnes_rank_total INT,
+    Points_perdus_rank_total INT,
+    Rang_gagnes INT
 );
 --Dimension Date
-CREATE TABLE Date_Perf (
+CREATE TABLE Date (
     IdDate NUMBER PRIMARY KEY,
-    Date_p DATE,
+    Date DATE,
     Jour NUMBER,
     Mois NUMBER,
     Annee NUMBER,
-    Periode_vacances VARCHAR2(50),
-    Saison VARCHAR2(50)
+    Periode_vacances VARCHAR2(20),
+    Saison VARCHAR2(20)
 );
 --Dimension ModeJeu
 CREATE TABLE ModeJeu (
     IdMode NUMBER PRIMARY KEY,
     Nom_mode VARCHAR2(50),
-    Objectif VARCHAR2(50),
+    Objectif VARCHAR2(100),
     Nom_map VARCHAR2(50),
-    Popularite NUMBER
+    Popularite FLOAT
 );
 --Dimension NiveauJoueur
-CREATE TABLE NiveauJoueur(
+CREATE TABLE NiveauJoueur (
     IdNiveauJoueur NUMBER PRIMARY KEY,
     TypeJoueur VARCHAR2(50),
-    NiveauJoueur NUMBER
+    NiveauJoueur INT
 );
 
 CREATE TABLE PerfPersonnage (
@@ -309,11 +309,11 @@ CREATE TABLE PerfPersonnage (
     IdSession NUMBER,
     IdMode NUMBER,
     IdDate NUMBER,
-    Taux_Victoire NUMBER,
-    Frequence_Utilisation NUMBER,
-    Degats_Totaux NUMBER,
-    Pick_Rate NUMBER,
-    Taux_ban NUMBER,
+    Taux_Victoire FLOAT,
+    Frequence_Utilisation INT,
+    Degats_Totaux INT,
+    Pick_Rate FLOAT,
+    Taux_ban FLOAT,
     CONSTRAINT pk_perf PRIMARY KEY (IdBrawler, IdNiveauJoueur, IdSession, IdMode, IdDate),
     CONSTRAINT fk_perf_brawler FOREIGN KEY (IdBrawler) REFERENCES Brawler(IdBrawler),
     CONSTRAINT fk_perf_session FOREIGN KEY (IdSession) REFERENCES Session_Perf(IdSession),
