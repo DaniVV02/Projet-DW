@@ -139,8 +139,10 @@ INSERT INTO Brawler VALUES (5, 'Crow', 'Légendaire', 'Assassin', DATE '2017-12-
 INSERT INTO Brawler VALUES (6, 'Spike', 'Légendaire', 'Lanceur', DATE '2017-06-15', 3400, 700, 'Attaque en épine', 5.5, 12, 3.5, 1400, 10);
 INSERT INTO Brawler VALUES (7, 'Leon', 'Légendaire', 'Assassin', DATE '2018-11-21', 3700, 850, 'Invisibilité', 7.5, 9, 4.0, 1600, 13);
 INSERT INTO Brawler VALUES (8, 'Sandy', 'Légendaire', 'Contrôleur', DATE '2019-09-18', 3800, 730, 'Sommeil', 5.0, 10, 3.3, 1100, 7);
-INSERT INTO Brawler VALUES (9, 'Amber', 'Mythique', 'Combattant', DATE '2020-10-23', 4100, 800, 'Lance-flammes', 6.0, 6, 4.8, 1500, 12);
-INSERT INTO Brawler VALUES (10, 'Belle', 'Chromatique', 'Sniper', DATE '2021-04-07', 3300, 760, 'Projectile rebondissant', 6.8, 14, 3.9, 1350, 11);
+INSERT INTO Brawler VALUES (9, 'Amber', 'Legendaire', 'Combattant', DATE '2020-10-23', 4100, 800, 'Lance-flammes', 6.0, 6, 4.8, 1500, 12);
+INSERT INTO Brawler VALUES (10, 'Belle', 'Epique', 'Sniper', DATE '2021-04-07', 3300, 760, 'Projectile rebondissant', , 14, 3.9, 1350, 11);
+INSERT INTO Brawler VALUES (11, 'Willow', 'Mythique', 'Controleur', DATE '2023-03-28', 5600, 720, 'Projectile emposione', 1600, 7.33, 2.0, 0, 8.33);
+
 
 
 INSERT INTO Session_Perf VALUES (1, INTERVAL '45' MINUTE, 'Showdown', 'Shelly', 20, 5, 30, 10, 1);

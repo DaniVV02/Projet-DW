@@ -262,10 +262,10 @@ CREATE TABLE Brawler (
     Vitesse FLOAT,
     Trait VARCHAR2(50),
     Attaque_Par_Sec FLOAT,
-    Rang_attaque INT,
+    Rang_attaque FLOAT,
     Vitesse_recharge FLOAT,
     Degats_ulti INT,
-    Rang_ulti INT
+    Rang_ulti FLOAT
 );
 --Dimension Session
 CREATE TABLE Session_Perf (
