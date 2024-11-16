@@ -154,6 +154,7 @@ END;
 
 
 
+
 -- Dimension Joueurs
 CREATE TABLE Joueurs (
     IdJoueurs NUMBER PRIMARY KEY,
@@ -254,8 +255,8 @@ CREATE TABLE Achats (
 CREATE TABLE Brawler (
     IdBrawler NUMBER PRIMARY KEY,
     Nom VARCHAR2(50),
-    Rarete VARCHAR2(20),
-    Role VARCHAR2(20),
+    Rarete VARCHAR2(50),
+    Role_brawler VARCHAR2(50),
     Date_Sortie DATE,
     Points_de_vie INT,
     Vitesse FLOAT,
@@ -267,11 +268,11 @@ CREATE TABLE Brawler (
     Rang_ulti INT
 );
 --Dimension Session
-CREATE TABLE Session (
+CREATE TABLE Session_Perf (
     IdSession NUMBER PRIMARY KEY,
     Duree_Session INTERVAL DAY TO SECOND,
-    Modes_Jeu_Joues VARCHAR2(100),
-    Brawlers_joues VARCHAR2(100),
+    Modes_Jeu_Joues VARCHAR2(50),
+    Brawlers_joues VARCHAR2(50),
     Trophees_gagnes_total INT,
     Trophees_perdus_total INT,
     Points_gagnes_rank_total INT,
@@ -279,25 +280,25 @@ CREATE TABLE Session (
     Rang_gagnes INT
 );
 --Dimension Date
-CREATE TABLE Date (
+CREATE TABLE Date_Perf (
     IdDate NUMBER PRIMARY KEY,
-    Date DATE,
+    Date_p DATE,
     Jour NUMBER,
     Mois NUMBER,
     Annee NUMBER,
-    Periode_vacances VARCHAR2(20),
-    Saison VARCHAR2(20)
+    Periode_vacances VARCHAR2(50),
+    Saison VARCHAR2(50)
 );
 --Dimension ModeJeu
 CREATE TABLE ModeJeu (
     IdMode NUMBER PRIMARY KEY,
     Nom_mode VARCHAR2(50),
-    Objectif VARCHAR2(100),
+    Objectif VARCHAR2(50),
     Nom_map VARCHAR2(50),
     Popularite FLOAT
 );
 --Dimension NiveauJoueur
-CREATE TABLE NiveauJoueur (
+CREATE TABLE NiveauJoueur(
     IdNiveauJoueur NUMBER PRIMARY KEY,
     TypeJoueur VARCHAR2(50),
     NiveauJoueur INT
@@ -321,4 +322,6 @@ CREATE TABLE PerfPersonnage (
     CONSTRAINT fk_perf_date FOREIGN KEY (IdDate) REFERENCES Date_Perf(IdDate),
     CONSTRAINT fk_perf_niveaujoueur FOREIGN KEY (IdNiveauJoueur) REFERENCES NiveauJoueur(IdNiveauJoueur)
 );
+
+
 
