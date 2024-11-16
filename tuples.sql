@@ -131,17 +131,17 @@ INSERT INTO Achats VALUES (10, 10, 10, 10, 10, 10, 10, 10, 29.99, 3, 'Pack d’O
 
 ----------  DATA MART 2 -------------------------
 
-INSERT INTO Brawler VALUES (1, 'Shelly', 'Commune', 'Combattant', DATE '2017-06-15', 3600, 720, 'Vitesse de tir rapide', 5.0, 10, 3.0, 1200, 8);
-INSERT INTO Brawler VALUES (2, 'Colt', 'Rare', 'Tireur', DATE '2017-06-15', 2800, 820, 'Vitesse de déplacement rapide', 7.0, 15, 4.5, 1000, 12);
-INSERT INTO Brawler VALUES (3, 'El Primo', 'Super Rare', 'Tank', DATE '2017-08-06', 5000, 650, 'Poings puissants', 8.0, 5, 2.0, 2000, 10);
-INSERT INTO Brawler VALUES (4, 'Barley', 'Rare', 'Lanceur', DATE '2017-06-15', 2400, 600, 'Attaque à distance', 4.0, 20, 5.0, 1500, 9);
-INSERT INTO Brawler VALUES (5, 'Crow', 'Légendaire', 'Assassin', DATE '2017-12-21', 3200, 900, 'Empoisonnement', 6.5, 8, 3.8, 1300, 11);
-INSERT INTO Brawler VALUES (6, 'Spike', 'Légendaire', 'Lanceur', DATE '2017-06-15', 3400, 700, 'Attaque en épine', 5.5, 12, 3.5, 1400, 10);
-INSERT INTO Brawler VALUES (7, 'Leon', 'Légendaire', 'Assassin', DATE '2018-11-21', 3700, 850, 'Invisibilité', 7.5, 9, 4.0, 1600, 13);
-INSERT INTO Brawler VALUES (8, 'Sandy', 'Légendaire', 'Contrôleur', DATE '2019-09-18', 3800, 730, 'Sommeil', 5.0, 10, 3.3, 1100, 7);
-INSERT INTO Brawler VALUES (9, 'Amber', 'Legendaire', 'Combattant', DATE '2020-10-23', 4100, 800, 'Lance-flammes', 6.0, 6, 4.8, 1500, 12);
-INSERT INTO Brawler VALUES (10, 'Belle', 'Epique', 'Sniper', DATE '2021-04-07', 3300, 760, 'Projectile rebondissant', , 14, 3.9, 1350, 11);
-INSERT INTO Brawler VALUES (11, 'Willow', 'Mythique', 'Controleur', DATE '2023-03-28', 5600, 720, 'Projectile emposione', 1600, 7.33, 2.0, 0, 8.33);
+INSERT INTO Brawler VALUES (1, 'Shelly', 'Commune', 'Combattant', DATE '2017-06-15', 7400, 'Rapide', NULL, 3000, 'Long', 'Normal', 5760, 'Long');
+INSERT INTO Brawler VALUES (2, 'Colt', 'Rare', 'Tireur', DATE '2017-06-15', 5600, 'Normal', NULL, 4320, 'Long', 'Rapide', 7680, 'Tres long');
+INSERT INTO Brawler VALUES (3, 'El Primo', 'Super Rare', 'Tank', DATE '2017-08-06', 12000, 'Rapide', 'Charge ulti des degats recus', 3040, 'Court', 'Tres rapide', 1920, 'Long');
+INSERT INTO Brawler VALUES (4, 'Barley', 'Rare', 'Lanceur', DATE '2017-06-15', 4800, 'Normal', 'Degats par seconde', 1600, 'Long', 'Lente', 1600, 'Tres long');
+INSERT INTO Brawler VALUES (5, 'Crow', 'Légendaire', 'Assassin', DATE '2017-12-21', 4800, 'Tres rapide', 'Empoisonnement', 1920, 'Long', 'Rapide', 3000, 'Long');
+INSERT INTO Brawler VALUES (6, 'Spike', 'Légendaire', 'Lanceur', DATE '2017-06-15', 5600, 'Normal', 'Attaque en épine', 1080, 'Long', 'Lente', 800, 'Long');
+INSERT INTO Brawler VALUES (7, 'Leon', 'Légendaire', 'Assassin', DATE '2018-11-21', 6800, 'Tres rapide', 'Invisibilité pendant ulti', 3840, 'Tres long', 'Normal', 0, 'Duree de 6 secondes');
+INSERT INTO Brawler VALUES (8, 'Sandy', 'Légendaire', 'Contrôleur', DATE '2019-09-18', 7600, 'Rapide', 'Invisibilite groupale pendant ulti', 1800, 'Normal', 'Normal', 0, 'Long');
+INSERT INTO Brawler VALUES (9, 'Amber', 'Legendaire', 'Combattant', DATE '2020-10-23', 6400, 'Normal', NULL, 4200, 'Long', 'Tres rapide', 3840, 'Long');
+INSERT INTO Brawler VALUES (10, 'Belle', 'Epique', 'Sniper', DATE '2021-04-07', 5200, 'Normal', 'Projectile rebondissant avec moitie degats', 2080, 'Tres long', 'Rapide', 1000, 'Tres long');
+INSERT INTO Brawler VALUES (11, 'Willow', 'Mythique', 'Controleur', DATE '2023-03-28', 5600, 'Normal', 'Empoisonnement et control de brawler ennemi pendant ulti', 800, 'Long', 'Lent', 0, 'Long et duree de 4 secondes');
 
 
 

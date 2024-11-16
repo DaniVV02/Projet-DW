@@ -259,13 +259,13 @@ CREATE TABLE Brawler (
     Role_brawler VARCHAR2(50),
     Date_Sortie DATE,
     Points_de_vie INT,
-    Vitesse FLOAT,
-    Trait VARCHAR2(50),
-    Attaque_Par_Sec FLOAT,
-    Rang_attaque FLOAT,
-    Vitesse_recharge FLOAT,
+    Vitesse VARCHAR2(50),
+    Trait VARCHAR2(100),
+    Attaque_Par_Munition INT,
+    Rang_attaque VARCHAR2(50),
+    Vitesse_recharge VARCHAR2(50),
     Degats_ulti INT,
-    Rang_ulti FLOAT
+    Rang_ulti VARCHAR2(50)
 );
 --Dimension Session
 CREATE TABLE Session_Perf (
