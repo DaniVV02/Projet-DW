@@ -143,16 +143,16 @@ INSERT INTO Brawler VALUES (9, 'Amber', 'Mythique', 'Combattant', DATE '2020-10-
 INSERT INTO Brawler VALUES (10, 'Belle', 'Chromatique', 'Sniper', DATE '2021-04-07', 3300, 760, 'Projectile rebondissant', 6.8, 14, 3.9, 1350, 11);
 
 
-INSERT INTO Session_Perf VALUES (1, 45, 'Showdown', 'Shelly', 20, 5, 30, 10, 1);
-INSERT INTO Session_Perf VALUES (2, 30, 'Brawl Ball', 'Colt', 15, 10, 20, 5, 0);
-INSERT INTO Session_Perf VALUES (3, 60, 'Heist', 'El Primo', 25, 5, 40, 15, 2);
-INSERT INTO Session_Perf VALUES (4, 20, 'Gem Grab', 'Barley', 10, 5, 15, 7, 0);
-INSERT INTO Session_Perf VALUES (5, 50, 'Bounty', 'Crow', 30, 10, 35, 12, 1);
-INSERT INTO Session_Perf VALUES (6, 35, 'Siege', 'Spike', 20, 10, 25, 10, 0);
-INSERT INTO Session_Perf VALUES (7, 55, 'Hot Zone', 'Leon', 40, 5, 45, 20, 2);
-INSERT INTO Session_Perf VALUES (8, 25, 'Knockout', 'Sandy', 15, 10, 18, 8, 1);
-INSERT INTO Session_Perf VALUES (9, 40, 'Duo Showdown', 'Amber', 20, 15, 30, 12, 1);
-INSERT INTO Session_Perf VALUES (10, 70, 'Power League', 'Belle', 50, 20, 60, 25, 3);
+INSERT INTO Session_Perf VALUES (1, INTERVAL '45' MINUTE, 'Showdown', 'Shelly', 20, 5, 30, 10, 1);
+INSERT INTO Session_Perf VALUES (2, INTERVAL '30' MINUTE, 'Brawl Ball', 'Colt', 15, 10, 20, 5, 0);
+INSERT INTO Session_Perf VALUES (3, INTERVAL '60' MINUTE, 'Heist', 'El Primo', 25, 5, 40, 15, 2);
+INSERT INTO Session_Perf VALUES (4, INTERVAL '20' MINUTE, 'Gem Grab', 'Barley', 10, 5, 15, 7, 0);
+INSERT INTO Session_Perf VALUES (5, INTERVAL '50' MINUTE, 'Bounty', 'Crow', 30, 10, 35, 12, 1);
+INSERT INTO Session_Perf VALUES (6, INTERVAL '35' MINUTE, 'Siege', 'Spike', 20, 10, 25, 10, 0);
+INSERT INTO Session_Perf VALUES (7, INTERVAL '55' MINUTE, 'Hot Zone', 'Leon', 40, 5, 45, 20, 2);
+INSERT INTO Session_Perf VALUES (8, INTERVAL '25' MINUTE, 'Knockout', 'Sandy', 15, 10, 18, 8, 1);
+INSERT INTO Session_Perf VALUES (9, INTERVAL '40' MINUTE, 'Duo Showdown', 'Amber', 20, 15, 30, 12, 1);
+INSERT INTO Session_Perf VALUES (10, INTERVAL '70' MINUTE, 'Power League', 'Belle', 50, 20, 60, 25, 3);
 
 
 INSERT INTO Date_Perf VALUES (1, DATE '2024-11-01', 1, 11, 2024, 'Non', 'Automne');
