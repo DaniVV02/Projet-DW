@@ -214,7 +214,7 @@ CREATE TABLE Session_Achats (
     Trophees_gagnes_total INT DEFAULT 0,
     Trophees_perdus_total INT DEFAULT 0,
     Points_gagnes_rank_total INT DEFAULT 0,
-    Points_perdus_rank_total INT DEFAULT 0,
+    Points_perdus_rank_total INT DEFAULT 0
 );
 --Dimensions Temps
 CREATE TABLE Temps (
@@ -282,7 +282,7 @@ CREATE TABLE Session_Perf (
     Trophees_gagnes_total INT DEFAULT 0,
     Trophees_perdus_total INT DEFAULT 0,
     Points_gagnes_rank_total INT DEFAULT 0,
-    Points_perdus_rank_total INT DEFAULT 0,
+    Points_perdus_rank_total INT DEFAULT 0
 );
 
 --Dimension Date
