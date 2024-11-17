@@ -372,17 +372,13 @@ SELECT
     IdSession_Perf,
     Duree_Session,
     Heure_debut,
-    Heure_fin,
     Type_session,
     Nombre_parties,
     Achats_effectues,
-    Modes_Jeu_Joues,
-    Brawlers_joues,
     Trophees_gagnes_total,
     Trophees_perdus_total,
     Points_gagnes_rank_total,
-    Points_perdus_rank_total,
-    Rang_gagnes
+    Points_perdus_rank_total
 FROM Session_Perf
 UNION ALL
 SELECT 
@@ -390,15 +386,11 @@ SELECT
     IdSession_Achats,
     Duree_Session,
     Heure_debut,
-    Heure_fin,
     Type_session,
     Nombre_parties,
     Achats_effectues,
-    Modes_Jeu_Joues,
-    Brawlers_joues,
     Trophees_gagnes_total,
     Trophees_perdus_total,
     Points_gagnes_rank_total,
-    Points_perdus_rank_total,
-    Rang_gagnes
+    Points_perdus_rank_total
 FROM Session_Achats;
