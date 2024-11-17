@@ -205,13 +205,20 @@ CREATE TABLE Promotion (
 );
 --Dimension Session
 CREATE TABLE Session_Achats (
-    IdSession NUMBER PRIMARY KEY,
-    Duree NUMBER,
+    IdSession_Achats NUMBER PRIMARY KEY,
+    Duree_Session NUMBER,
     Heure_debut DATE,
     Heure_fin DATE,
     Type_session VARCHAR2(50),
     Nombre_parties NUMBER,
-    Achats_effectues NUMBER
+    Achats_effectues NUMBER,
+    Modes_Jeu_Joues VARCHAR2(50) DEFAULT 'Non applicable',
+    Brawlers_joues VARCHAR2(50) DEFAULT 'Non applicable',
+    Trophees_gagnes_total INT DEFAULT 0,
+    Trophees_perdus_total INT DEFAULT 0,
+    Points_gagnes_rank_total INT DEFAULT 0,
+    Points_perdus_rank_total INT DEFAULT 0,
+    Rang_gagnes INT DEFAULT 0
 );
 --Dimensions Temps
 CREATE TABLE Temps (
@@ -232,20 +239,21 @@ CREATE TABLE Achats (
     IdEvenement NUMBER,
     IdPromotion NUMBER,
     IdDate NUMBER,
-    IdSession NUMBER,
+    IdSession_Achats NUMBER,
     IdTypeProduit NUMBER,
     IdTemps NUMBER,
     Montant_achat NUMBER(10, 2), -- Montant total de l'achat
     Nombre_achats NUMBER,
     Type_achat VARCHAR2(50),
-    CONSTRAINT pk_achats PRIMARY KEY (IdProduit, IdJoueurs, IdEvenement, IdPromotion, IdDate, IdSession, IdTypeProduit),
+    CONSTRAINT pk_achats PRIMARY KEY (IdProduit, IdJoueurs, IdEvenement, IdPromotion, IdDate, IdSession_Achats, IdTypeProduit, IdTemps),
     CONSTRAINT fk_achats_joueurs FOREIGN KEY (IdJoueurs) REFERENCES Joueurs(IdJoueurs),
     CONSTRAINT fk_achats_evenement FOREIGN KEY (IdEvenement) REFERENCES Evenement(IdEvenement),
     CONSTRAINT fk_achats_produit FOREIGN KEY (IdProduit) REFERENCES Produit(IdProduit),
     CONSTRAINT fk_achats_date FOREIGN KEY (IdDate) REFERENCES Date_Achats(IdDate),
     CONSTRAINT fk_achats_promotion FOREIGN KEY (IdPromotion) REFERENCES Promotion(IdPromotion),
     CONSTRAINT fk_achats_type_produit FOREIGN KEY (IdTypeProduit) REFERENCES TypeProduit(IdTypeProduit),
-    CONSTRAINT fk_achats_temps FOREIGN KEY (IdTemps) REFERENCES Temps(IdTemps)
+    CONSTRAINT fk_achats_temps FOREIGN KEY (IdTemps) REFERENCES Temps(IdTemps),
+    CONSTRAINT fk_achats_session FOREIGN KEY (IdSession_Achats) REFERENCES Session_Achats(IdSession_Achats)
 );
 
 --------------------------------------------------------------------------------------------------------------------------------------
@@ -269,16 +277,22 @@ CREATE TABLE Brawler (
 );
 --Dimension Session
 CREATE TABLE Session_Perf (
-    IdSession NUMBER PRIMARY KEY,
-    Duree_Session INTERVAL DAY TO SECOND,
+    IdSession_Perf NUMBER PRIMARY KEY,
+    Duree_Session NUMBER,
+    Heure_debut DATE,
+    Heure_fin DATE,
+    Type_session VARCHAR2(50) DEFAULT 'Non applicable',
+    Nombre_parties NUMBER DEFAULT 0,
+    Achats_effectues NUMBER DEFAULT 0,
     Modes_Jeu_Joues VARCHAR2(50),
     Brawlers_joues VARCHAR2(50),
-    Trophees_gagnes_total INT,
-    Trophees_perdus_total INT,
-    Points_gagnes_rank_total INT,
-    Points_perdus_rank_total INT,
-    Rang_gagnes INT
+    Trophees_gagnes_total INT DEFAULT 0,
+    Trophees_perdus_total INT DEFAULT 0,
+    Points_gagnes_rank_total INT DEFAULT 0,
+    Points_perdus_rank_total INT DEFAULT 0,
+    Rang_gagnes INT DEFAULT 0
 );
+
 --Dimension Date
 CREATE TABLE Date_Perf (
     IdDate NUMBER PRIMARY KEY,
@@ -307,7 +321,7 @@ CREATE TABLE NiveauJoueur(
 CREATE TABLE PerfPersonnage (
     IdBrawler NUMBER,
     IdNiveauJoueur NUMBER,
-    IdSession NUMBER,
+    IdSession_Perf NUMBER,
     IdMode NUMBER,
     IdDate NUMBER,
     Taux_Victoire FLOAT,
@@ -315,10 +329,84 @@ CREATE TABLE PerfPersonnage (
     Degats_Totaux INT,
     Pick_Rate FLOAT,
     Taux_ban FLOAT,
-    CONSTRAINT pk_perf PRIMARY KEY (IdBrawler, IdNiveauJoueur, IdSession, IdMode, IdDate),
+    CONSTRAINT pk_perf PRIMARY KEY (IdBrawler, IdNiveauJoueur, IdSession_Perf, IdMode, IdDate),
     CONSTRAINT fk_perf_brawler FOREIGN KEY (IdBrawler) REFERENCES Brawler(IdBrawler),
-    CONSTRAINT fk_perf_session FOREIGN KEY (IdSession) REFERENCES Session_Perf(IdSession),
+    CONSTRAINT fk_perf_session FOREIGN KEY (IdSession_Perf) REFERENCES Session_Perf(IdSession_Perf),
     CONSTRAINT fk_perf_mode FOREIGN KEY (IdMode) REFERENCES ModeJeu(IdMode),
     CONSTRAINT fk_perf_date FOREIGN KEY (IdDate) REFERENCES Date_Perf(IdDate),
     CONSTRAINT fk_perf_niveaujoueur FOREIGN KEY (IdNiveauJoueur) REFERENCES NiveauJoueur(IdNiveauJoueur)
 );
+
+------------------------------------------------------------------------------------------------
+
+--vue dimensions Joueurs 
+CREATE OR REPLACE VIEW v_joueurs AS
+SELECT 
+    IdJoueurs, 
+    Age, 
+    Region, 
+    Date_Inscription, 
+    Type_Joueur
+FROM
+    Joueurs;
+
+
+--vue dimensions Date
+CREATE OR REPLACE VIEW v_Date AS
+SELECT 
+    IdDate, 
+    Date_achats AS Date_Complete, 
+    Jour, 
+    Mois, 
+    Annee, 
+    Periode_vacances, 
+    Saison
+FROM Date_Achats
+UNION ALL
+SELECT 
+    IdDate, 
+    Date_p AS Date_Complete, 
+    Jour, 
+    Mois, 
+    Annee, 
+    Periode_vacances, 
+    Saison
+FROM Date_Perf;
+
+--vue Session
+CREATE OR REPLACE VIEW v_Session AS
+SELECT 
+    'Perf' AS Source,
+    IdSession_Perf,
+    Duree_Session,
+    Heure_debut,
+    Heure_fin,
+    Type_session,
+    Nombre_parties,
+    Achats_effectues,
+    Modes_Jeu_Joues,
+    Brawlers_joues,
+    Trophees_gagnes_total,
+    Trophees_perdus_total,
+    Points_gagnes_rank_total,
+    Points_perdus_rank_total,
+    Rang_gagnes
+FROM Session_Perf
+UNION ALL
+SELECT 
+    'Achats' AS Source,
+    IdSession_Achats,
+    Duree_Session,
+    Heure_debut,
+    Heure_fin,
+    Type_session,
+    Nombre_parties,
+    Achats_effectues,
+    Modes_Jeu_Joues,
+    Brawlers_joues,
+    Trophees_gagnes_total,
+    Trophees_perdus_total,
+    Points_gagnes_rank_total,
+    Points_perdus_rank_total,
+    Rang_gagnes
+FROM Session_Achats;
