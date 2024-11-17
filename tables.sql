@@ -169,7 +169,7 @@ CREATE TABLE Evenement (
     IdEvenement NUMBER PRIMARY KEY,
     Type_evenement VARCHAR2(50),
     Duree NUMBER, -- Durée en minutes ou en heures
-    Description VARCHAR2(255),
+    Description_evenement VARCHAR2(255),
     Recompense_possible VARCHAR2(255)
 );
 
@@ -206,24 +206,20 @@ CREATE TABLE Promotion (
 --Dimension Session
 CREATE TABLE Session_Achats (
     IdSession_Achats NUMBER PRIMARY KEY,
-    Duree_Session NUMBER,
+    Duree_Session_Minutes INT,
     Heure_debut DATE,
-    Heure_fin DATE,
     Type_session VARCHAR2(50),
     Nombre_parties NUMBER,
     Achats_effectues NUMBER,
-    Modes_Jeu_Joues VARCHAR2(50) DEFAULT 'Non applicable',
-    Brawlers_joues VARCHAR2(50) DEFAULT 'Non applicable',
     Trophees_gagnes_total INT DEFAULT 0,
     Trophees_perdus_total INT DEFAULT 0,
     Points_gagnes_rank_total INT DEFAULT 0,
     Points_perdus_rank_total INT DEFAULT 0,
-    Rang_gagnes INT DEFAULT 0
 );
 --Dimensions Temps
 CREATE TABLE Temps (
     IdTemps NUMBER PRIMARY KEY,
-    Heure DATE,
+    Heure TIMESTAMP,
     AM_PM_indicator VARCHAR2(50)
 );
 --Dimension TypeProduit
@@ -278,19 +274,15 @@ CREATE TABLE Brawler (
 --Dimension Session
 CREATE TABLE Session_Perf (
     IdSession_Perf NUMBER PRIMARY KEY,
-    Duree_Session NUMBER,
+    Duree_Session_Minutes INT,
     Heure_debut DATE,
-    Heure_fin DATE,
     Type_session VARCHAR2(50) DEFAULT 'Non applicable',
-    Nombre_parties NUMBER DEFAULT 0,
-    Achats_effectues NUMBER DEFAULT 0,
-    Modes_Jeu_Joues VARCHAR2(50),
-    Brawlers_joues VARCHAR2(50),
+    Nombre_parties INT DEFAULT 0,
+    Achats_effectues INT DEFAULT 0,
     Trophees_gagnes_total INT DEFAULT 0,
     Trophees_perdus_total INT DEFAULT 0,
     Points_gagnes_rank_total INT DEFAULT 0,
     Points_perdus_rank_total INT DEFAULT 0,
-    Rang_gagnes INT DEFAULT 0
 );
 
 --Dimension Date

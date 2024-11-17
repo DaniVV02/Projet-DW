@@ -69,16 +69,16 @@ INSERT INTO Date_Achats VALUES (10, TO_DATE ('2024-11-01', 'YYYY-MM-DD'),1, 11, 
 
 
 -- Insertion dans la table Session
-INSERT INTO Session_Achats VALUES (1, 180, TO_DATE('2024-11-10 14:00','YYYY-MM-DD HH24:MI'), TO_DATE( '2024-11-10 17:00','YYYY-MM-DD HH24:MI' ), 'Session Longue', 10, 3);
-INSERT INTO Session_Achats VALUES (2, 45, TO_DATE( '2024-11-10 18:00', 'YYYY-MM-DD HH24:MI'),TO_DATE( '2024-11-10 18:45','YYYY-MM-DD HH24:MI'), 'Session Courte', 2, 0);
-INSERT INTO Session_Achats VALUES (3, 90, TO_DATE( '2024-11-10 19:00', 'YYYY-MM-DD HH24:MI'),TO_DATE( '2024-11-10 20:30','YYYY-MM-DD HH24:MI'), 'Session Moyenne', 5, 2);
-INSERT INTO Session_Achats VALUES (4, 60, TO_DATE( '2024-11-11 12:00','YYYY-MM-DD HH24:MI'), TO_DATE( '2024-11-11 13:00','YYYY-MM-DD HH24:MI'), 'Session Courte', 3, 1);
-INSERT INTO Session_Achats VALUES (5, 240, TO_DATE( '2024-11-12 14:00','YYYY-MM-DD HH24:MI'), TO_DATE( '2024-11-12 18:00','YYYY-MM-DD HH24:MI'), 'Session Très Longue', 15, 6);
-INSERT INTO Session_Achats VALUES (6, 30, TO_DATE( '2024-11-12 20:00', 'YYYY-MM-DD HH24:MI'),TO_DATE( '2024-11-12 20:30','YYYY-MM-DD HH24:MI'), 'Session Très Courte', 1, 0);
-INSERT INTO Session_Achats VALUES (7, 150, TO_DATE( '2024-11-13 16:00','YYYY-MM-DD HH24:MI'), TO_DATE( '2024-11-13 18:30','YYYY-MM-DD HH24:MI'), 'Session Longue', 8, 3);
-INSERT INTO Session_Achats VALUES (8, 75, TO_DATE( '2024-11-13 10:00', 'YYYY-MM-DD HH24:MI'),TO_DATE( '2024-11-13 11:15','YYYY-MM-DD HH24:MI'), 'Session Moyenne', 4, 1);
-INSERT INTO Session_Achats VALUES (9, 20, TO_DATE( '2024-11-13 21:00', 'YYYY-MM-DD HH24:MI'),TO_DATE( '2024-11-13 21:20','YYYY-MM-DD HH24:MI'), 'Session Flash', 1, 0);
-INSERT INTO Session_Achats VALUES (10, 120, TO_DATE( '2024-11-14 09:00', 'YYYY-MM-DD HH24:MI'),TO_DATE( '2024-11-14 11:00','YYYY-MM-DD HH24:MI'), 'Session Longue', 7, 5);
+INSERT INTO Session_Achats VALUES (1, 180, TO_DATE('2024-11-10 14:00','YYYY-MM-DD HH24:MI'), 'Session Longue', 100, 4, 600, 50, 2000, 0);
+INSERT INTO Session_Achats VALUES (2, 45, TO_DATE( '2024-11-10 18:00', 'YYYY-MM-DD HH24:MI'), 'Session Courte', 20, 0, 150, 12, 0, 0);
+INSERT INTO Session_Achats VALUES (3, 90, TO_DATE( '2024-11-10 19:00', 'YYYY-MM-DD HH24:MI'), 'Session Moyenne', 50, 2, 150, 12, 1500, 0);
+INSERT INTO Session_Achats VALUES (4, 60, TO_DATE( '2024-11-11 12:00','YYYY-MM-DD HH24:MI'), 'Session Courte',30, 2, 150, 30, 0, 0);
+INSERT INTO Session_Achats VALUES (5, 240, TO_DATE( '2024-11-12 14:00','YYYY-MM-DD HH24:MI'), 'Session Très Longue',150, 20, 500, 12, 3000, 0);
+INSERT INTO Session_Achats VALUES (6, 30, TO_DATE( '2024-11-12 20:00', 'YYYY-MM-DD HH24:MI'), 'Session Très Courte', 15, 1, 50, 0, 100, 0);
+INSERT INTO Session_Achats VALUES (7, 150, TO_DATE( '2024-11-13 16:00','YYYY-MM-DD HH24:MI'),  'Session Longue', 60, 2, 200, 12, 1000, 0);
+INSERT INTO Session_Achats VALUES (8, 75, TO_DATE( '2024-11-13 10:00', 'YYYY-MM-DD HH24:MI'),'Session Moyenne', 30, 1, 150, 12, 0, 0);
+INSERT INTO Session_Achats VALUES (9, 20, TO_DATE( '2024-11-13 21:00', 'YYYY-MM-DD HH24:MI'),'Session Flash', 5, 0, 20, 8, 0,0);
+INSERT INTO Session_Achats VALUES (10, 120, TO_DATE( '2024-11-14 09:00', 'YYYY-MM-DD HH24:MI'), 'Session Longue', 50, 5, 250, 0, 600,0);
 
 
 
@@ -144,17 +144,16 @@ INSERT INTO Brawler VALUES (10, 'Belle', 'Epique', 'Sniper', DATE '2021-04-07', 
 INSERT INTO Brawler VALUES (11, 'Willow', 'Mythique', 'Controleur', DATE '2023-03-28', 5600, 'Normal', 'Empoisonnement et control de brawler ennemi pendant ulti', 800, 'Long', 'Lent', 0, 'Long et duree de 4 secondes');
 
 
-
-INSERT INTO Session_Perf VALUES (1, INTERVAL '45' MINUTE, 'Showdown', 'Shelly', 20, 5, 30, 10, 1);
-INSERT INTO Session_Perf VALUES (2, INTERVAL '30' MINUTE, 'Brawl Ball', 'Colt', 15, 10, 20, 5, 0);
-INSERT INTO Session_Perf VALUES (3, INTERVAL '60' MINUTE, 'Heist', 'El Primo', 25, 5, 40, 15, 2);
-INSERT INTO Session_Perf VALUES (4, INTERVAL '20' MINUTE, 'Gem Grab', 'Barley', 10, 5, 15, 7, 0);
-INSERT INTO Session_Perf VALUES (5, INTERVAL '50' MINUTE, 'Bounty', 'Crow', 30, 10, 35, 12, 1);
-INSERT INTO Session_Perf VALUES (6, INTERVAL '35' MINUTE, 'Siege', 'Spike', 20, 10, 25, 10, 0);
-INSERT INTO Session_Perf VALUES (7, INTERVAL '55' MINUTE, 'Hot Zone', 'Leon', 40, 5, 45, 20, 2);
-INSERT INTO Session_Perf VALUES (8, INTERVAL '25' MINUTE, 'Knockout', 'Sandy', 15, 10, 18, 8, 1);
-INSERT INTO Session_Perf VALUES (9, INTERVAL '40' MINUTE, 'Duo Showdown', 'Amber', 20, 15, 30, 12, 1);
-INSERT INTO Session_Perf VALUES (10, INTERVAL '70' MINUTE, 'Power League', 'Belle', 50, 20, 60, 25, 3);
+INSERT INTO Session_Perf VALUES (1, 45, TO_DATE('2024-11-10 14:00','YYYY-MM-DD HH24:MI'), 'Ladder', 30, 1,  100, 0, 0,0);
+INSERT INTO Session_Perf VALUES (2, 30, TO_DATE( '2024-11-10 18:00', 'YYYY-MM-DD HH24:MI'),'Ladder', 15, 0, 50, 8,0,0);
+INSERT INTO Session_Perf VALUES (3, 60, TO_DATE( '2024-11-12 14:00','YYYY-MM-DD HH24:MI'),'Rank',  20, 3, 0, 0, 2000, 100);
+INSERT INTO Session_Perf VALUES (4, 20, TO_DATE( '2024-11-13 10:00', 'YYYY-MM-DD HH24:MI'),'Rank',  5, 0, 0,0, 200, 300);
+INSERT INTO Session_Perf VALUES (5, 50, TO_DATE( '2024-11-13 16:00','YYYY-MM-DD HH24:MI'),'Rank', 22, 1, 0, 0, 1200,0);
+INSERT INTO Session_Perf VALUES (6, 35, TO_DATE( '2024-11-13 17:05','YYYY-MM-DD HH24:MI'),'Rank et Ladder', 10, 0, 8, 40, 200, 54);
+INSERT INTO Session_Perf VALUES (7, 55, TO_DATE( '2024-11-13 16:50','YYYY-MM-DD HH24:MI'),'Ladder',  40, 2, 200,0,0, 0);
+INSERT INTO Session_Perf VALUES (8, 25, TO_DATE( '2024-11-10 19:10', 'YYYY-MM-DD HH24:MI'),'Rank et Ladder',  15, 0, 50, 0, 180, 8);
+INSERT INTO Session_Perf VALUES (9, 40, TO_DATE( '2024-11-10 19:00', 'YYYY-MM-DD HH24:MI'),'Rank', 16, 1, 0, 0, 250,12);
+INSERT INTO Session_Perf VALUES (10, 70 ,TO_DATE( '2024-11-13 21:00', 'YYYY-MM-DD HH24:MI'), 'Rank et Ladder', 50, 4, 160, 8, 225, 0);
 
 
 INSERT INTO Date_Perf VALUES (1, DATE '2024-11-01', 1, 11, 2024, 'Non', 'Automne');
