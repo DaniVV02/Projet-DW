@@ -199,3 +199,9 @@ INSERT INTO PerfPersonnage VALUES (7, 3, 7, 2, 7, 0.85, 0.40, 60000, 0.45, 0.01)
 INSERT INTO PerfPersonnage VALUES (8, 1, 8, 3, 8, 0.40, 0.10, 15000, 0.10, 0.12);
 INSERT INTO PerfPersonnage VALUES (9, 4, 9, 4, 9, 0.25, 0.03, 8000, 0.03, 0.20);
 INSERT INTO PerfPersonnage VALUES (10, 5, 10, 5, 10, 0.90, 0.50, 70000, 0.50, 0.01);
+INSERT INTO PerfPersonnage VALUES (1, 3, 1, 1, 4, 0.65, 0.20, 80000, 0.22, 0.05);
+INSERT INTO PerfPersonnage VALUES (1, 3, 1, 1, 4, 0.65, 0.20, 65000, 0.22, 0.05);
+INSERT INTO PerfPersonnage VALUES (4, 2, 3, 3, 5, 0.65, 0.20, 50000, 0.22, 0.15);
+INSERT INTO PerfPersonnage VALUES (4, 3, 3, 3, 5, 0.65, 0.20, 50000, 0.22, 0.15);
+INSERT INTO PerfPersonnage VALUES (11, 5, 10, 2, 1, 0.85, 0.80, 80000, 0.22, 0.05);
+
