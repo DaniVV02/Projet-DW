@@ -1,5 +1,6 @@
 
 --Actions Achats
+
 --traitement 1
 SELECT 
     d.Date_achats, 
@@ -38,11 +39,16 @@ GROUP BY
 ORDER BY 
     TotalAchats DESC;
 
---traitement 3
+--traitement 3        marche pas encore  
 SELECT 
     e.IdEvenement, 
     e.Type_evenement, 
     d.Date_achats, 
+    CASE
+        WHEN d.Date_achats < (SYSDATE - e.Duree) THEN 'Avant'
+        WHEN d.Date_achats BETWEEN (SYSDATE - e.Duree) AND SYSDATE THEN 'Pendant'
+        ELSE 'Après'
+    END AS Periode,
     SUM(a.Montant_achat) AS MontantTotal, 
     COUNT(a.IdProduit) AS NombreAchats
 FROM 
@@ -52,11 +58,19 @@ JOIN
 JOIN 
     Date_Achats d ON a.IdDate = d.IdDate
 WHERE 
-    d.Date_achats BETWEEN DATE_SUB(e.Date_debut, INTERVAL 7 DAY) AND DATE_ADD(e.Date_fin, INTERVAL 7 DAY)
+    d.Date_achats BETWEEN 
+    (SYSDATE - (e.Duree * 2)) AND 
+    (SYSDATE + (e.Duree * 2))
 GROUP BY 
-    e.IdEvenement, e.Type_evenement, d.Date_achats
+    e.IdEvenement, e.Type_evenement, d.Date_achats, 
+    CASE
+        WHEN d.Date_achats < (SYSDATE - e.Duree) THEN 'Avant'
+        WHEN d.Date_achats BETWEEN (SYSDATE - e.Duree) AND SYSDATE THEN 'Pendant'
+        ELSE 'Après'
+    END
 ORDER BY 
     e.IdEvenement, d.Date_achats;
+
 
 --traitement 4
 SELECT 
@@ -101,7 +115,7 @@ JOIN
 JOIN 
     Date_Achats d ON a.IdDate = d.IdDate
 WHERE 
-    d.Date_achats BETWEEN DATE_SUB(p.Date_debut, INTERVAL 7 DAY) AND DATE_ADD(p.Date_fin, INTERVAL 7 DAY)
+    d.Date_achats BETWEEN (SYSDATE - 7) AND (SYSDATE + p.Duree + 7) -- Utilisation de SYSDATE et Duree
 GROUP BY 
     p.IdPromotion, p.TypeOffre, d.Date_achats
 ORDER BY 
