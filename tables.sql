@@ -370,7 +370,7 @@ CREATE OR REPLACE VIEW v_Session AS
 SELECT 
     'Perf' AS Source,
     IdSession_Perf,
-    Duree_Session,
+    Duree_Session_Minutes,
     Heure_debut,
     Type_session,
     Nombre_parties,
@@ -384,7 +384,7 @@ UNION ALL
 SELECT 
     'Achats' AS Source,
     IdSession_Achats,
-    Duree_Session,
+    Duree_Session_Minutes,
     Heure_debut,
     Type_session,
     Nombre_parties,
