@@ -58,11 +58,11 @@ INSERT INTO Promotion VALUES (10, 'Promo Nouvelle Année', 250, 35.00, 4, 'Annue
 INSERT INTO Date_Achats VALUES (1, TO_DATE('2024-11-10','YYYY-MM-DD'), 10, 11, 2024, 'Non', 'Automne');
 INSERT INTO Date_Achats VALUES (2, TO_DATE ('2024-12-25', 'YYYY-MM-DD'), 25, 12, 2024, 'Oui', 'Hiver');
 INSERT INTO Date_Achats VALUES (3, TO_DATE ('2024-01-01', 'YYYY-MM-DD') ,1, 1, 2024, 'Oui', 'Hiver');
-INSERT INTO Date_Achats VALUES (4, TO_DATE ('2024-07-15', 'YYYY-MM-DD') ,15, 7, 2024, 'Non', 'Été');
+INSERT INTO Date_Achats VALUES (4, TO_DATE ('2024-07-15', 'YYYY-MM-DD') ,15, 7, 2024, 'Non', 'Ete');
 INSERT INTO Date_Achats VALUES (5, TO_DATE ('2024-03-20', 'YYYY-MM-DD'),20, 3, 2024, 'Non', 'Printemps');
 INSERT INTO Date_Achats VALUES (6, TO_DATE ('2024-09-05', 'YYYY-MM-DD'),5, 9, 2024, 'Non', 'Automne');
 INSERT INTO Date_Achats VALUES (7, TO_DATE ('2024-12-24', 'YYYY-MM-DD'),24, 12, 2024, 'Oui', 'Hiver');
-INSERT INTO Date_Achats VALUES (8, TO_DATE ('2024-08-10', 'YYYY-MM-DD'),10, 8, 2024, 'Non', 'Été');
+INSERT INTO Date_Achats VALUES (8, TO_DATE ('2024-08-10', 'YYYY-MM-DD'),10, 8, 2024, 'Non', 'Ete');
 INSERT INTO Date_Achats VALUES (9, TO_DATE ('2024-05-01', 'YYYY-MM-DD'),1, 5, 2024, 'Non', 'Printemps');
 INSERT INTO Date_Achats VALUES (10, TO_DATE ('2024-11-01', 'YYYY-MM-DD'),1, 11, 2024, 'Non', 'Automne');
 
