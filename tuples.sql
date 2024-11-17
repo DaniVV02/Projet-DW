@@ -156,15 +156,15 @@ INSERT INTO Session_Perf VALUES (9, 40, TO_DATE( '2024-11-10 19:00', 'YYYY-MM-DD
 INSERT INTO Session_Perf VALUES (10, 70 ,TO_DATE( '2024-11-13 21:00', 'YYYY-MM-DD HH24:MI'), 'Rank et Ladder', 50, 4, 160, 8, 225, 0);
 
 
-INSERT INTO Date_Perf VALUES (1, DATE '2024-11-01', 1, 11, 2024, 'Non', 'Automne');
-INSERT INTO Date_Perf VALUES (2, DATE '2024-11-02', 2, 11, 2024, 'Non', 'Automne');
-INSERT INTO Date_Perf VALUES (3, DATE '2024-11-03', 3, 11, 2024, 'Non', 'Automne');
-INSERT INTO Date_Perf VALUES (4, DATE '2024-11-04', 4, 11, 2024, 'Non', 'Automne');
-INSERT INTO Date_Perf VALUES (5, DATE '2024-11-05', 5, 11, 2024, 'Non', 'Automne');
-INSERT INTO Date_Perf VALUES (6, DATE '2024-11-06', 6, 11, 2024, 'Non', 'Automne');
-INSERT INTO Date_Perf VALUES (7, DATE '2024-11-07', 7, 11, 2024, 'Non', 'Automne');
-INSERT INTO Date_Perf VALUES (8, DATE '2024-11-08', 8, 11, 2024, 'Non', 'Automne');
-INSERT INTO Date_Perf VALUES (9, DATE '2024-11-09', 9, 11, 2024, 'Non', 'Automne');
+INSERT INTO Date_Perf VALUES (1, DATE '2021-01-01', 1, 11, 2024, 'Non', 'Hiver');
+INSERT INTO Date_Perf VALUES (2, DATE '2022-06-02', 2, 11, 2024, 'Non', 'Ete');
+INSERT INTO Date_Perf VALUES (3, DATE '2022-07-03', 3, 11, 2024, 'Non', 'Ete');
+INSERT INTO Date_Perf VALUES (4, DATE '2022-11-04', 4, 11, 2024, 'Non', 'Automne');
+INSERT INTO Date_Perf VALUES (5, DATE '2023-04-05', 5, 11, 2024, 'Non', 'Printemps');
+INSERT INTO Date_Perf VALUES (6, DATE '2023-05-06', 6, 11, 2024, 'Non', 'Printemps');
+INSERT INTO Date_Perf VALUES (7, DATE '2023-06-07', 7, 11, 2024, 'Non', 'Ete');
+INSERT INTO Date_Perf VALUES (8, DATE '2024-03-08', 8, 11, 2024, 'Non', 'Hiver');
+INSERT INTO Date_Perf VALUES (9, DATE '2024-08-09', 9, 11, 2024, 'Non', 'Ete');
 INSERT INTO Date_Perf VALUES (10, DATE '2024-11-10', 10, 11, 2024, 'Non', 'Automne');
 
 
