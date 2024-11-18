@@ -201,16 +201,16 @@ INSERT INTO PerfPersonnage VALUES (6, 5, 1, 6, 11, 0.75, 5, 25000, 0.17, 0.0, 0)
 INSERT INTO PerfPersonnage VALUES (7, 3, 6, 2, 7, 0.85, 0.40, 60000, 0.45, 0.01); -- session 6
 INSERT INTO PerfPersonnage VALUES (8, 1, 8, 3, 8, 0.40, 0.10, 15000, 0.10, 0.12); -- session 6
 
-INSERT INTO PerfPersonnage VALUES (7, 1, 10, 2, 9, 0.25, 2, 8000, 0.03, 0.20, 0); -- session 10
-INSERT INTO PerfPersonnage VALUES (10, 1, 10, 5, 10, 0.90, 2, 70000, 0.50, 0.01, 0); -- session 10
-INSERT INTO PerfPersonnage VALUES (1, 1, 10, 7, 4, 0.65, 2, 80000, 0.22, 0.05, 0); -- session 10
-INSERT INTO PerfPersonnage VALUES (1, 1, 10, 8, 4, 0.65, 2, 65000, 0.22, 0.05, 0); -- session 10
-INSERT INTO PerfPersonnage VALUES (4, 1, 10, 4, 5, 0.65, 2, 50000, 0.22, 0.15, 0); -- session 10
-INSERT INTO PerfPersonnage VALUES (13, 1, 10, 2, 5, 0.9, 20, 1100000, 0.6, 0.0,0); -- ok kenji session 10 brawl ball
-INSERT INTO PerfPersonnage VALUES (13, 1, 10, 4, 5, 1.0, 10, 550000, 0.6, 0.0,0); -- ok kenji session 10 gem grab
-INSERT INTO PerfPersonnage VALUES (13, 1, 10, 9, 5, 1.0, 6, 250000, 1.0, 0.0,0); -- session 10 rank pas banni
-INSERT INTO PerfPersonnage VALUES (13, 1, 10, 9, 5, NULL,NULL , NULL, NULL, 0.7,1); -- ok kenji session 10 banni
-INSERT INTO PerfPersonnage VALUES (9, 1, 10, 9, 5, 0.14,14 , 100000, 0.28, 0.0,0); -- ok amber session 10 quand kenji banni
+INSERT INTO PerfPersonnage VALUES (7, 1, 10, 2, 10, 0.5, 2, 50000, 0.09, 0.0, 0); -- ok leon session 10 brawl ball
+INSERT INTO PerfPersonnage VALUES (10, 1, 10, 5, 10, 0.5, 2, 70000, 1.0, 0.0, 0); -- ok belle session 10 bounty
+INSERT INTO PerfPersonnage VALUES (1, 1, 10, 7, 10, 0.0, 2, 40000, 1.0, 0.0, 0); -- ok shelly session 10 knockout
+INSERT INTO PerfPersonnage VALUES (2, 1, 10, 8, 10, 0.5, 2, 65000, 1.0, 0.0, 0); -- ok colt session 10 duo showdown
+INSERT INTO PerfPersonnage VALUES (4, 1, 10, 4, 10, 1.0, 2, 50000, 0.16, 0.0, 0); -- ok barley session 10 gem grab
+INSERT INTO PerfPersonnage VALUES (13, 1, 10, 2, 10, 0.9, 20, 1100000, 0.6, 0.0,0); -- ok kenji session 10 brawl ball
+INSERT INTO PerfPersonnage VALUES (13, 1, 10, 4, 10, 1.0, 10, 550000, 0.6, 0.0,0); -- ok kenji session 10 gem grab
+INSERT INTO PerfPersonnage VALUES (13, 1, 10, 9, 10, 1.0, 6, 250000, 1.0, 0.0,0); -- session 10 rank pas banni
+INSERT INTO PerfPersonnage VALUES (13, 1, 10, 9, 10, NULL,NULL , NULL, NULL, 0.7,1); -- ok kenji session 10 banni
+INSERT INTO PerfPersonnage VALUES (9, 1, 10, 9, 10, 0.14,14 , 100000, 0.28, 0.0,0); -- ok amber session 10 quand kenji banni
 
 
 
