@@ -168,7 +168,7 @@ CREATE TABLE Joueurs (
 CREATE TABLE Evenement (
     IdEvenement NUMBER PRIMARY KEY,
     Type_evenement VARCHAR2(50),
-    Duree NUMBER, -- Durée en minutes ou en heures
+    Duree INT, -- Durée en jours
     Description_evenement VARCHAR2(255),
     Recompense_possible VARCHAR2(255)
 );
@@ -197,7 +197,7 @@ CREATE TABLE Date_Achats (
 CREATE TABLE Promotion (
     IdPromotion NUMBER PRIMARY KEY,
     TypeOffre VARCHAR2(50),
-    Cout_Promotion NUMBER(10, 2),
+    --Cout_Promotion NUMBER(10, 2),
     Remise_Promotion NUMBER(5, 2), -- Remise en pourcentage
     Duree NUMBER, -- Durée en jours
     Frequence VARCHAR2(50),
@@ -219,7 +219,7 @@ CREATE TABLE Session_Achats (
 --Dimensions Temps
 CREATE TABLE Temps (
     IdTemps NUMBER PRIMARY KEY,
-    Heure TIMESTAMP,
+    Heure VARCHAR2(10),
     AM_PM_indicator VARCHAR2(50)
 );
 --Dimension TypeProduit
@@ -239,8 +239,8 @@ CREATE TABLE Achats (
     IdTypeProduit NUMBER,
     IdTemps NUMBER,
     Montant_achat NUMBER(10, 2), -- Montant total de l'achat
-    Nombre_achats NUMBER,
-    Type_achat VARCHAR2(50),
+    Nombre_achats INT,
+    --Type_achat VARCHAR2(50),
     CONSTRAINT pk_achats PRIMARY KEY (IdProduit, IdJoueurs, IdEvenement, IdPromotion, IdDate, IdSession_Achats, IdTypeProduit, IdTemps),
     CONSTRAINT fk_achats_joueurs FOREIGN KEY (IdJoueurs) REFERENCES Joueurs(IdJoueurs),
     CONSTRAINT fk_achats_evenement FOREIGN KEY (IdEvenement) REFERENCES Evenement(IdEvenement),
