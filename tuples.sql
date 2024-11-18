@@ -138,23 +138,24 @@ INSERT INTO Brawler VALUES (4, 'Barley', 'Rare', 'Lanceur', DATE '2017-06-15', 4
 INSERT INTO Brawler VALUES (5, 'Crow', 'Légendaire', 'Assassin', DATE '2017-12-21', 4800, 'Tres rapide', 'Empoisonnement', 1920, 'Long', 'Rapide', 3000, 'Long');
 INSERT INTO Brawler VALUES (6, 'Spike', 'Légendaire', 'Lanceur', DATE '2017-06-15', 5600, 'Normal', 'Attaque en épine', 1080, 'Long', 'Lente', 800, 'Long');
 INSERT INTO Brawler VALUES (7, 'Leon', 'Légendaire', 'Assassin', DATE '2018-11-21', 6800, 'Tres rapide', 'Invisibilité pendant ulti', 3840, 'Tres long', 'Normal', 0, 'Duree de 6 secondes');
-INSERT INTO Brawler VALUES (8, 'Sandy', 'Légendaire', 'Contrôleur', DATE '2019-09-18', 7600, 'Rapide', 'Invisibilite groupale pendant ulti', 1800, 'Normal', 'Normal', 0, 'Long');
+INSERT INTO Brawler VALUES (8, 'Sandy', 'Legendaire', 'Contrôleur', DATE '2019-09-18', 7600, 'Rapide', 'Invisibilite groupale pendant ulti', 1800, 'Normal', 'Normal', 0, 'Long');
 INSERT INTO Brawler VALUES (9, 'Amber', 'Legendaire', 'Combattant', DATE '2020-10-23', 6400, 'Normal', NULL, 4200, 'Long', 'Tres rapide', 3840, 'Long');
 INSERT INTO Brawler VALUES (10, 'Belle', 'Epique', 'Sniper', DATE '2021-04-07', 5200, 'Normal', 'Projectile rebondissant avec moitie degats', 2080, 'Tres long', 'Rapide', 1000, 'Tres long');
 INSERT INTO Brawler VALUES (11, 'Willow', 'Mythique', 'Controleur', DATE '2023-03-28', 5600, 'Normal', 'Empoisonnement et control de brawler ennemi pendant ulti', 800, 'Long', 'Lent', 0, 'Long et duree de 4 secondes');
-INSERT INTO Brawler VALUES (12, 'Larry & Lawrie', 'Mythique', 'Controleur', DATE '2023-03-28', 6000, 'Normal', 'Attaque deux fois et invoque un robot pour son ulti', 1600, 'Long', 'Lent', 0, 1200);
+INSERT INTO Brawler VALUES (12, 'Larry & Lawrie', 'Mythique', 'Controleur', DATE '2023-03-28', 6000, 'Normal', 'Attaque deux fois et invoque un robot pour son ulti', 1600, 'Long', 'Lent', 1400, '6000 de vie pour le robot');
+INSERT INTO Brawler VALUES (13, 'Kenji', 'Legendaire', 'Assassin', DATE '2024-10-06', 9000, 'Rapide', 'Attaque de deux façons différentes', 2500, 'Court', 'Lent', 2500, 'Tres long, attaque en croix');
 
 
-INSERT INTO Session_Perf VALUES (1, 45, TO_DATE('2024-11-10 14:00','YYYY-MM-DD HH24:MI'), 'Ladder', 30, 1,  300, 0, 0,0);
+INSERT INTO Session_Perf VALUES (1, 45, TO_DATE('2024-11-10 14:00','YYYY-MM-DD HH24:MI'), 'Ladder', 30, 1,  300, 16, 0,0);
 INSERT INTO Session_Perf VALUES (2, 30, TO_DATE( '2024-11-10 18:00', 'YYYY-MM-DD HH24:MI'),'Ladder', 15, 0, 50, 8,0,0);
 INSERT INTO Session_Perf VALUES (3, 60, TO_DATE( '2024-11-12 14:00','YYYY-MM-DD HH24:MI'),'Rank',  20, 3, 0, 0, 2000, 100);
 INSERT INTO Session_Perf VALUES (4, 20, TO_DATE( '2024-11-13 10:00', 'YYYY-MM-DD HH24:MI'),'Rank',  5, 0, 0,0, 200, 300);
 INSERT INTO Session_Perf VALUES (5, 50, TO_DATE( '2024-11-13 16:00','YYYY-MM-DD HH24:MI'),'Rank', 22, 1, 0, 0, 1200,0);
 INSERT INTO Session_Perf VALUES (6, 35, TO_DATE( '2022-07-03 17:05','YYYY-MM-DD HH24:MI'),'Rank et Ladder', 12, 0, 8, 60, 200, 54);
-INSERT INTO Session_Perf VALUES (7, 55, TO_DATE( '2024-11-13 16:50','YYYY-MM-DD HH24:MI'),'Ladder',  40, 2, 300,0,0, 0);
+INSERT INTO Session_Perf VALUES (7, 55, TO_DATE( '2024-11-13 16:50','YYYY-MM-DD HH24:MI'),'Ladder',  40, 2, 300,0,500, 0);
 INSERT INTO Session_Perf VALUES (8, 25, TO_DATE( '2024-11-10 19:10', 'YYYY-MM-DD HH24:MI'),'Rank et Ladder',  15, 0, 50, 0, 180, 8);
 INSERT INTO Session_Perf VALUES (9, 40, TO_DATE( '2024-03-08 19:00', 'YYYY-MM-DD HH24:MI'),'Rank', 16, 0, 0, 0, 250,220);
-INSERT INTO Session_Perf VALUES (10, 70 ,TO_DATE( '2024-11-13 21:00', 'YYYY-MM-DD HH24:MI'), 'Rank et Ladder', 50, 4, 160, 8, 225, 0);
+INSERT INTO Session_Perf VALUES (10, 70 ,TO_DATE( '2024-11-13 21:00', 'YYYY-MM-DD HH24:MI'), 'Rank et Ladder', 60, 4, 160, 8, 1200, 1000);
 
 
 INSERT INTO Date_Perf VALUES (1, DATE '2021-01-01', 1, 01, 2021, 'Non', 'Hiver');
@@ -191,19 +192,33 @@ INSERT INTO NiveauJoueur VALUES (5, 'Joueur Maître', 5);
 
 
 -- PerfPersonnage : performances des brawlers par session, joueur, mode et date
-INSERT INTO PerfPersonnage VALUES (1, 4, 6, 4, 3, 0.1, 20, 200000, 0.22, 0.0); --ok shelly session 6
-INSERT INTO PerfPersonnage VALUES (2, 2, 9, 9, 8, 0.6, 6, 240000, 0.37, 0.0); --ok colt session 9
-INSERT INTO PerfPersonnage VALUES (3, 2, 9, 9, 8, 0.5, 10, 450000, 0.63, 0.0); --ok primo session 9
-INSERT INTO PerfPersonnage VALUES (4, 5, 1, 2, 11, 1.0, 20, 200000, 0.7, 0.0); -- ok barley session 1
-INSERT INTO PerfPersonnage VALUES (5, 5, 1, 2, 5, 0.75, 5, 200000, 0.30, 0.03); -- session 1
-INSERT INTO PerfPersonnage VALUES (6, 2, 6, 1, 6, 0.55, 5, 25000, 0.20, 0.08); --session 1
-INSERT INTO PerfPersonnage VALUES (7, 3, 7, 2, 7, 0.85, 0.40, 60000, 0.45, 0.01);
-INSERT INTO PerfPersonnage VALUES (8, 1, 8, 3, 8, 0.40, 0.10, 15000, 0.10, 0.12);
-INSERT INTO PerfPersonnage VALUES (9, 4, 9, 4, 9, 0.25, 0.03, 8000, 0.03, 0.20);
-INSERT INTO PerfPersonnage VALUES (10, 5, 10, 5, 10, 0.90, 0.50, 70000, 0.50, 0.01);
-INSERT INTO PerfPersonnage VALUES (1, 3, 1, 1, 4, 0.65, 0.20, 80000, 0.22, 0.05);
-INSERT INTO PerfPersonnage VALUES (1, 4, 1, 4, 4, 0.65, 0.20, 65000, 0.22, 0.05);
-INSERT INTO PerfPersonnage VALUES (4, 2, 2, 3, 5, 0.65, 0.20, 50000, 0.22, 0.15);
-INSERT INTO PerfPersonnage VALUES (4, 3, 3, 3, 5, 0.65, 0.20, 50000, 0.22, 0.15);
-INSERT INTO PerfPersonnage VALUES (11, 5, 10, 2, 1, 0.85, 0.80, 80000, 0.22, 0.05);
-INSERT INTO PerfPersonnage VALUES (12, 1, 7, 2, 10, 1.0, 35, 2400000, 0.88, 1.0); --ok Larry
+INSERT INTO PerfPersonnage VALUES (1, 4, 6, 4, 3, 0.1, 20, 200000, 0.22, 0.0, 0); --ok shelly session 6
+INSERT INTO PerfPersonnage VALUES (2, 2, 9, 9, 8, 0.6, 6, 240000, 0.37, 0.0, 0); --ok colt session 9
+INSERT INTO PerfPersonnage VALUES (3, 2, 9, 9, 8, 0.5, 10, 450000, 0.63, 0.0, 0); --ok primo session 9
+INSERT INTO PerfPersonnage VALUES (4, 5, 1, 2, 11, 1.0, 20, 1000000, 0.67, 0.0, 0); -- ok barley session 1
+INSERT INTO PerfPersonnage VALUES (5, 5, 1, 3, 11, 0.6, 5, 150000, 0.17, 0.0, 0); -- ok crow session 1
+INSERT INTO PerfPersonnage VALUES (6, 5, 1, 6, 11, 0.75, 5, 25000, 0.17, 0.0, 0); -- ok spike session 1
+INSERT INTO PerfPersonnage VALUES (7, 3, 6, 2, 7, 0.85, 0.40, 60000, 0.45, 0.01); -- session 6
+INSERT INTO PerfPersonnage VALUES (8, 1, 8, 3, 8, 0.40, 0.10, 15000, 0.10, 0.12); -- session 6
+
+INSERT INTO PerfPersonnage VALUES (7, 1, 10, 2, 9, 0.25, 2, 8000, 0.03, 0.20, 0); -- session 10
+INSERT INTO PerfPersonnage VALUES (10, 1, 10, 5, 10, 0.90, 2, 70000, 0.50, 0.01, 0); -- session 10
+INSERT INTO PerfPersonnage VALUES (1, 1, 10, 7, 4, 0.65, 2, 80000, 0.22, 0.05, 0); -- session 10
+INSERT INTO PerfPersonnage VALUES (1, 1, 10, 8, 4, 0.65, 2, 65000, 0.22, 0.05, 0); -- session 10
+INSERT INTO PerfPersonnage VALUES (4, 1, 10, 4, 5, 0.65, 2, 50000, 0.22, 0.15, 0); -- session 10
+INSERT INTO PerfPersonnage VALUES (13, 1, 10, 2, 5, 0.9, 20, 1100000, 0.6, 0.0,0); -- ok kenji session 10 brawl ball
+INSERT INTO PerfPersonnage VALUES (13, 1, 10, 4, 5, 1.0, 10, 550000, 0.6, 0.0,0); -- ok kenji session 10 gem grab
+INSERT INTO PerfPersonnage VALUES (13, 1, 10, 9, 5, 1.0, 6, 250000, 1.0, 0.0,0); -- session 10 rank pas banni
+INSERT INTO PerfPersonnage VALUES (13, 1, 10, 9, 5, NULL,NULL , NULL, NULL, 0.7,1); -- ok kenji session 10 banni
+INSERT INTO PerfPersonnage VALUES (9, 1, 10, 9, 5, 0.14,14 , 100000, 0.28, 0.0,0); -- ok amber session 10 quand kenji banni
+
+
+
+INSERT INTO PerfPersonnage VALUES (13, 5, 10, 2, 1, 0.85, 0.80, 80000, 0.22, 0.05); -- session 8
+INSERT INTO PerfPersonnage VALUES (13, 5, 10, 2, 1, 0.85, 0.80, 80000, 0.22, 0.05); -- session 8
+
+
+INSERT INTO PerfPersonnage VALUES (12, 1, 7, 2, 10, 1.0, 30, 2400000, 0.75, 1.0, 0); --ok Larry session 7
+INSERT INTO PerfPersonnage VALUES (12, 1, 7, 2, 10, 1.0, 1, 60000, 1.0, 0.0, 0); --ok Larry session 7 rank
+INSERT INTO PerfPersonnage VALUES (12 1, 7, 9, 10, NULL, NULL, NULL, NULL, 0.9, 1); --ok Larry session 7 banni
+

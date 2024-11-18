@@ -321,6 +321,7 @@ CREATE TABLE PerfPersonnage (
     Degats_Totaux INT,
     Pick_Rate FLOAT,
     Taux_ban FLOAT,
+    EstBanni NUMBER(1),
     CONSTRAINT pk_perf PRIMARY KEY (IdBrawler, IdNiveauJoueur, IdSession_Perf, IdMode, IdDate),
     CONSTRAINT fk_perf_brawler FOREIGN KEY (IdBrawler) REFERENCES Brawler(IdBrawler),
     CONSTRAINT fk_perf_session FOREIGN KEY (IdSession_Perf) REFERENCES Session_Perf(IdSession_Perf),
