@@ -142,30 +142,33 @@ INSERT INTO Brawler VALUES (8, 'Sandy', 'Légendaire', 'Contrôleur', DATE '2019
 INSERT INTO Brawler VALUES (9, 'Amber', 'Legendaire', 'Combattant', DATE '2020-10-23', 6400, 'Normal', NULL, 4200, 'Long', 'Tres rapide', 3840, 'Long');
 INSERT INTO Brawler VALUES (10, 'Belle', 'Epique', 'Sniper', DATE '2021-04-07', 5200, 'Normal', 'Projectile rebondissant avec moitie degats', 2080, 'Tres long', 'Rapide', 1000, 'Tres long');
 INSERT INTO Brawler VALUES (11, 'Willow', 'Mythique', 'Controleur', DATE '2023-03-28', 5600, 'Normal', 'Empoisonnement et control de brawler ennemi pendant ulti', 800, 'Long', 'Lent', 0, 'Long et duree de 4 secondes');
+INSERT INTO Brawler VALUES (12, 'Larry & Lawrie', 'Mythique', 'Controleur', DATE '2023-03-28', 6000, 'Normal', 'Attaque deux fois et invoque un robot pour son ulti', 1600, 'Long', 'Lent', 0, 1200);
 
 
-INSERT INTO Session_Perf VALUES (1, 45, TO_DATE('2024-11-10 14:00','YYYY-MM-DD HH24:MI'), 'Ladder', 30, 1,  100, 0, 0,0);
+INSERT INTO Session_Perf VALUES (1, 45, TO_DATE('2024-11-10 14:00','YYYY-MM-DD HH24:MI'), 'Ladder', 30, 1,  300, 0, 0,0);
 INSERT INTO Session_Perf VALUES (2, 30, TO_DATE( '2024-11-10 18:00', 'YYYY-MM-DD HH24:MI'),'Ladder', 15, 0, 50, 8,0,0);
 INSERT INTO Session_Perf VALUES (3, 60, TO_DATE( '2024-11-12 14:00','YYYY-MM-DD HH24:MI'),'Rank',  20, 3, 0, 0, 2000, 100);
 INSERT INTO Session_Perf VALUES (4, 20, TO_DATE( '2024-11-13 10:00', 'YYYY-MM-DD HH24:MI'),'Rank',  5, 0, 0,0, 200, 300);
 INSERT INTO Session_Perf VALUES (5, 50, TO_DATE( '2024-11-13 16:00','YYYY-MM-DD HH24:MI'),'Rank', 22, 1, 0, 0, 1200,0);
-INSERT INTO Session_Perf VALUES (6, 35, TO_DATE( '2024-11-13 17:05','YYYY-MM-DD HH24:MI'),'Rank et Ladder', 10, 0, 8, 40, 200, 54);
-INSERT INTO Session_Perf VALUES (7, 55, TO_DATE( '2024-11-13 16:50','YYYY-MM-DD HH24:MI'),'Ladder',  40, 2, 200,0,0, 0);
+INSERT INTO Session_Perf VALUES (6, 35, TO_DATE( '2022-07-03 17:05','YYYY-MM-DD HH24:MI'),'Rank et Ladder', 12, 0, 8, 60, 200, 54);
+INSERT INTO Session_Perf VALUES (7, 55, TO_DATE( '2024-11-13 16:50','YYYY-MM-DD HH24:MI'),'Ladder',  40, 2, 300,0,0, 0);
 INSERT INTO Session_Perf VALUES (8, 25, TO_DATE( '2024-11-10 19:10', 'YYYY-MM-DD HH24:MI'),'Rank et Ladder',  15, 0, 50, 0, 180, 8);
-INSERT INTO Session_Perf VALUES (9, 40, TO_DATE( '2024-11-10 19:00', 'YYYY-MM-DD HH24:MI'),'Rank', 16, 1, 0, 0, 250,12);
+INSERT INTO Session_Perf VALUES (9, 40, TO_DATE( '2024-03-08 19:00', 'YYYY-MM-DD HH24:MI'),'Rank', 16, 0, 0, 0, 250,220);
 INSERT INTO Session_Perf VALUES (10, 70 ,TO_DATE( '2024-11-13 21:00', 'YYYY-MM-DD HH24:MI'), 'Rank et Ladder', 50, 4, 160, 8, 225, 0);
 
 
-INSERT INTO Date_Perf VALUES (1, DATE '2021-01-01', 1, 11, 2024, 'Non', 'Hiver');
-INSERT INTO Date_Perf VALUES (2, DATE '2022-06-02', 2, 11, 2024, 'Non', 'Ete');
-INSERT INTO Date_Perf VALUES (3, DATE '2022-07-03', 3, 11, 2024, 'Non', 'Ete');
-INSERT INTO Date_Perf VALUES (4, DATE '2022-11-04', 4, 11, 2024, 'Non', 'Automne');
-INSERT INTO Date_Perf VALUES (5, DATE '2023-04-05', 5, 11, 2024, 'Non', 'Printemps');
-INSERT INTO Date_Perf VALUES (6, DATE '2023-05-06', 6, 11, 2024, 'Non', 'Printemps');
-INSERT INTO Date_Perf VALUES (7, DATE '2023-06-07', 7, 11, 2024, 'Non', 'Ete');
-INSERT INTO Date_Perf VALUES (8, DATE '2024-03-08', 8, 11, 2024, 'Non', 'Hiver');
-INSERT INTO Date_Perf VALUES (9, DATE '2024-08-09', 9, 11, 2024, 'Non', 'Ete');
-INSERT INTO Date_Perf VALUES (10, DATE '2024-11-10', 10, 11, 2024, 'Non', 'Automne');
+INSERT INTO Date_Perf VALUES (1, DATE '2021-01-01', 1, 01, 2021, 'Non', 'Hiver');
+INSERT INTO Date_Perf VALUES (2, DATE '2022-06-02', 2, 06, 2022, 'Oui', 'Ete');
+INSERT INTO Date_Perf VALUES (3, DATE '2022-07-03', 3, 07, 2022, 'Oui', 'Ete');
+INSERT INTO Date_Perf VALUES (4, DATE '2022-11-04', 4, 11, 2022, 'Non', 'Automne');
+INSERT INTO Date_Perf VALUES (5, DATE '2023-04-05', 5, 04, 2023, 'Non', 'Printemps');
+INSERT INTO Date_Perf VALUES (6, DATE '2023-05-06', 6, 05, 2023, 'Non', 'Printemps');
+INSERT INTO Date_Perf VALUES (7, DATE '2023-06-07', 7, 06, 2023, 'Oui', 'Ete');
+INSERT INTO Date_Perf VALUES (8, DATE '2024-03-08', 8, 03, 2024, 'Non', 'Hiver');
+INSERT INTO Date_Perf VALUES (9, DATE '2024-08-09', 9, 08, 2024, 'Oui', 'Ete');
+INSERT INTO Date_Perf VALUES (10, DATE '2024-11-13', 13, 11, 2024, 'Non', 'Automne');
+INSERT INTO Date_Perf VALUES (11, DATE '2024-11-10', 10, 11, 2024, 'Non', 'Automne');
+
 
 
 
@@ -174,11 +177,10 @@ INSERT INTO ModeJeu VALUES (2, 'Brawl Ball', 'Marquer des buts', 'Super Stadium'
 INSERT INTO ModeJeu VALUES (3, 'Heist', 'Protéger le coffre', 'Safe Zone', 0.60);
 INSERT INTO ModeJeu VALUES (4, 'Gem Grab', 'Collecter des gemmes', 'Crystal Arcade', 0.75);
 INSERT INTO ModeJeu VALUES (5, 'Bounty', 'Éliminer les ennemis', 'Snake Prairie', 0.65);
-INSERT INTO ModeJeu VALUES (6, 'Siege', 'Capturer les boulons', 'Factory Rush', 0.55);
-INSERT INTO ModeJeu VALUES (7, 'Hot Zone', 'Contrôler la zone', 'Split', 0.50);
-INSERT INTO ModeJeu VALUES (8, 'Knockout', 'Éliminer tous les adversaires', 'Goldarm Gulch', 0.65);
-INSERT INTO ModeJeu VALUES (9, 'Duo Showdown', 'Survivre en duo', 'Double Trouble', 0.80);
-INSERT INTO ModeJeu VALUES (10, 'Power League', 'Compétitif', 'Random Map', 0.90);
+INSERT INTO ModeJeu VALUES (6, 'Hot Zone', 'Contrôler la zone', 'Split', 0.50);
+INSERT INTO ModeJeu VALUES (7, 'Knockout', 'Éliminer tous les adversaires', 'Goldarm Gulch', 0.65);
+INSERT INTO ModeJeu VALUES (8, 'Duo Showdown', 'Survivre en duo', 'Double Trouble', 0.80);
+INSERT INTO ModeJeu VALUES (9, 'Ranked', 'Compétitif', 'Random Map', 0.90);
 
 
 INSERT INTO NiveauJoueur VALUES (1, 'Joueur Débutant', 1);
@@ -189,12 +191,12 @@ INSERT INTO NiveauJoueur VALUES (5, 'Joueur Maître', 5);
 
 
 -- PerfPersonnage : performances des brawlers par session, joueur, mode et date
-INSERT INTO PerfPersonnage VALUES (1, 3, 1, 1, 1, 0.65, 0.20, 30000, 0.22, 0.05);
-INSERT INTO PerfPersonnage VALUES (2, 2, 2, 2, 2, 0.45, 0.12, 20000, 0.15, 0.10);
-INSERT INTO PerfPersonnage VALUES (3, 1, 3, 3, 3, 0.80, 0.35, 50000, 0.40, 0.02);
-INSERT INTO PerfPersonnage VALUES (4, 4, 4, 4, 4, 0.30, 0.05, 10000, 0.05, 0.15);
-INSERT INTO PerfPersonnage VALUES (5, 5, 5, 5, 5, 0.75, 0.28, 40000, 0.30, 0.03);
-INSERT INTO PerfPersonnage VALUES (6, 2, 6, 1, 6, 0.55, 0.18, 25000, 0.20, 0.08);
+INSERT INTO PerfPersonnage VALUES (1, 4, 6, 4, 3, 0.1, 20, 200000, 0.22, 0.0); --ok shelly session 6
+INSERT INTO PerfPersonnage VALUES (2, 2, 9, 9, 8, 0.6, 6, 240000, 0.37, 0.0); --ok colt session 9
+INSERT INTO PerfPersonnage VALUES (3, 2, 9, 9, 8, 0.5, 10, 450000, 0.63, 0.0); --ok primo session 9
+INSERT INTO PerfPersonnage VALUES (4, 5, 1, 2, 11, 1.0, 20, 200000, 0.7, 0.0); -- ok barley session 1
+INSERT INTO PerfPersonnage VALUES (5, 5, 1, 2, 5, 0.75, 5, 200000, 0.30, 0.03); -- session 1
+INSERT INTO PerfPersonnage VALUES (6, 2, 6, 1, 6, 0.55, 5, 25000, 0.20, 0.08); --session 1
 INSERT INTO PerfPersonnage VALUES (7, 3, 7, 2, 7, 0.85, 0.40, 60000, 0.45, 0.01);
 INSERT INTO PerfPersonnage VALUES (8, 1, 8, 3, 8, 0.40, 0.10, 15000, 0.10, 0.12);
 INSERT INTO PerfPersonnage VALUES (9, 4, 9, 4, 9, 0.25, 0.03, 8000, 0.03, 0.20);
@@ -204,3 +206,4 @@ INSERT INTO PerfPersonnage VALUES (1, 4, 1, 4, 4, 0.65, 0.20, 65000, 0.22, 0.05)
 INSERT INTO PerfPersonnage VALUES (4, 2, 2, 3, 5, 0.65, 0.20, 50000, 0.22, 0.15);
 INSERT INTO PerfPersonnage VALUES (4, 3, 3, 3, 5, 0.65, 0.20, 50000, 0.22, 0.15);
 INSERT INTO PerfPersonnage VALUES (11, 5, 10, 2, 1, 0.85, 0.80, 80000, 0.22, 0.05);
+INSERT INTO PerfPersonnage VALUES (12, 1, 7, 2, 10, 1.0, 35, 2400000, 0.88, 1.0); --ok Larry
