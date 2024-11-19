@@ -17,7 +17,7 @@ JOIN
 JOIN 
     Date_Achats d ON a.IdDate = d.IdDate
 GROUP BY 
-    d.Date_achats, j.IdJoueurs, p.Categorie
+    CUBE(d.Date_achats, j.IdJoueurs, p.Categorie)
 ORDER BY 
     d.Date_achats, j.IdJoueurs, p.Categorie;
 
@@ -35,7 +35,7 @@ JOIN
 JOIN 
     Session_Achats sa ON a.IdSession_Achats = sa.IdSession_Achats
 GROUP BY 
-    j.IdJoueurs
+    ROLLUP(j.IdJoueurs)
 ORDER BY 
     TotalAchats DESC;
 
@@ -52,7 +52,7 @@ SELECT
 FROM Evenement e
 JOIN Achats a ON e.IdEvenement = a.IdEvenement
 JOIN Date_Achats da ON a.IdDate = da.IdDate
-GROUP BY e.IdEvenement, e.Type_evenement, e.date_debut, e.date_fin
+GROUP BY ROLLUP(e.IdEvenement, e.Type_evenement, e.date_debut, e.date_fin)
 ORDER BY e.date_debut;
 
 
@@ -68,9 +68,8 @@ FROM
     Achats a
 INNER JOIN Produit p ON a.IdProduit = p.IdProduit
 INNER JOIN TypeProduit tp ON a.IdTypeProduit = tp.IdTypeProduit
-GROUP BY 
-    tp.TypeProduit, 
-    p.Nom_Produit
+GROUP BY CUBE(tp.TypeProduit, 
+    p.Nom_Produit)
 ORDER BY 
     Nombre_Total_Achats DESC, 
     Montant_Total_Achats DESC;
@@ -93,7 +92,7 @@ JOIN
 WHERE 
     d.Date_achats BETWEEN (CURRENT_DATE - 7) AND (CURRENT_DATE + p.Duree + 7)
 GROUP BY 
-    p.IdPromotion, p.TypeOffre, d.Date_achats
+    ROLLUP(p.IdPromotion, p.TypeOffre, d.Date_achats)
 ORDER BY 
     p.IdPromotion, d.Date_achats;
 
@@ -103,7 +102,7 @@ SELECT d.Saison, tp.TypeProduit, SUM(a.Montant_achat) AS Total_Achats
 FROM Achats a
 JOIN Date_Achats d ON a.IdDate = d.IdDate
 JOIN TypeProduit tp ON a.IdTypeProduit = tp.IdTypeProduit
-GROUP BY d.Saison, tp.TypeProduit
+GROUP BY ROLLUP(d.Saison, tp.TypeProduit)
 ORDER BY d.Saison, Total_Achats DESC;
 
 --requete 7:Étudier la répartition des achats par tranche horaire :
@@ -115,6 +114,6 @@ FROM
 JOIN 
     Temps t ON a.IdTemps = t.IdTemps
 GROUP BY 
-    t.Heure
+    CUBE(t.Heure)
 ORDER BY 
     t.Heure;
