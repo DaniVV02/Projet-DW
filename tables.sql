@@ -197,7 +197,6 @@ CREATE TABLE Date_Achats (
 CREATE TABLE Promotion (
     IdPromotion NUMBER PRIMARY KEY,
     TypeOffre VARCHAR2(50),
-    --Cout_Promotion NUMBER(10, 2),
     Remise_Promotion NUMBER(5, 2), -- Remise en pourcentage
     Duree NUMBER, -- Durée en jours
     Frequence VARCHAR2(50),

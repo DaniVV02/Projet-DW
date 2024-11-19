@@ -26,27 +26,28 @@ ORDER BY
 SELECT 
     j.IdJoueurs, 
     SUM(a.Nombre_achats) AS TotalAchats, 
-    AVG(sa.Duree) AS MoyenneDureeSession, 
+    AVG(sa.Duree_Session_Minutes) AS MoyenneDureeSession, 
     AVG(sa.Nombre_parties) AS MoyenneParties
 FROM 
     Achats a
 JOIN 
     Joueurs j ON a.IdJoueurs = j.IdJoueurs
 JOIN 
-    Session_Achats sa ON a.IdSession = sa.IdSession
+    Session_Achats sa ON a.IdSession_Achats = sa.IdSession_Achats
 GROUP BY 
     j.IdJoueurs
 ORDER BY 
     TotalAchats DESC;
 
---traitement 3        marche pas encore  
+
+--traitement 3     
 SELECT 
     e.IdEvenement, 
     e.Type_evenement, 
     d.Date_achats, 
     CASE
-        WHEN d.Date_achats < (SYSDATE - e.Duree) THEN 'Avant'
-        WHEN d.Date_achats BETWEEN (SYSDATE - e.Duree) AND SYSDATE THEN 'Pendant'
+        WHEN d.Date_achats < (CURRENT_DATE - e.Duree) THEN 'Avant'
+        WHEN d.Date_achats BETWEEN (CURRENT_DATE - e.Duree) AND CURRENT_DATE THEN 'Pendant'
         ELSE 'Après'
     END AS Periode,
     SUM(a.Montant_achat) AS MontantTotal, 
@@ -59,13 +60,13 @@ JOIN
     Date_Achats d ON a.IdDate = d.IdDate
 WHERE 
     d.Date_achats BETWEEN 
-    (SYSDATE - (e.Duree * 2)) AND 
-    (SYSDATE + (e.Duree * 2))
+    (CURRENT_DATE - (e.Duree * 2)) AND 
+    (CURRENT_DATE + (e.Duree * 2))
 GROUP BY 
     e.IdEvenement, e.Type_evenement, d.Date_achats, 
     CASE
-        WHEN d.Date_achats < (SYSDATE - e.Duree) THEN 'Avant'
-        WHEN d.Date_achats BETWEEN (SYSDATE - e.Duree) AND SYSDATE THEN 'Pendant'
+        WHEN d.Date_achats < (CURRENT_DATE - e.Duree) THEN 'Avant'
+        WHEN d.Date_achats BETWEEN (CURRENT_DATE - e.Duree) AND CURRENT_DATE THEN 'Pendant'
         ELSE 'Après'
     END
 ORDER BY 
@@ -78,7 +79,7 @@ SELECT
     p.Nom_Produit, 
     p.Categorie AS TypeProduit, 
     COUNT(a.IdProduit) AS NombreAchats, 
-    AVG(DATEDIFF(NEXT_PURCHASE.Date_achats, d.Date_achats)) AS FrequenceRachat
+    AVG(EXTRACT(EPOCH FROM (np.Date_achats - d.Date_achats)) / 86400) AS FrequenceRachat
 FROM 
     Achats a
 JOIN 
@@ -91,14 +92,15 @@ LEFT JOIN
     (SELECT IdJoueurs, IdProduit, MIN(IdDate) AS Date_achats 
      FROM Achats 
      WHERE IdProduit IN (SELECT IdProduit FROM Produit WHERE Categorie = 'Gemmes') 
-     GROUP BY IdJoueurs, IdProduit) AS NEXT_PURCHASE 
-    ON a.IdJoueurs = NEXT_PURCHASE.IdJoueurs AND a.IdProduit = NEXT_PURCHASE.IdProduit
+     GROUP BY IdJoueurs, IdProduit) AS np 
+    ON a.IdJoueurs = np.IdJoueurs AND a.IdProduit = np.IdProduit
 WHERE 
     p.Categorie = 'Gemmes'
 GROUP BY 
     j.IdJoueurs, p.Nom_Produit, p.Categorie
 ORDER BY 
     j.IdJoueurs, p.Nom_Produit;
+
 
 --traitement 5
 
@@ -115,7 +117,7 @@ JOIN
 JOIN 
     Date_Achats d ON a.IdDate = d.IdDate
 WHERE 
-    d.Date_achats BETWEEN (SYSDATE - 7) AND (SYSDATE + p.Duree + 7) -- Utilisation de SYSDATE et Duree
+    d.Date_achats BETWEEN (CURRENT_DATE - 7) AND (CURRENT_DATE + p.Duree + 7)
 GROUP BY 
     p.IdPromotion, p.TypeOffre, d.Date_achats
 ORDER BY 

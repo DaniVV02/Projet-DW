@@ -28,11 +28,11 @@ INSERT INTO Evenement VALUES (11, 'Aucun', 0, 'Aucun', 'Aucun');
 
 
 -- Insertion dans la table Produit
-INSERT INTO Produit VALUES (1, 'Pack de 160 gemmes', 9.99, 'Ressource virtuelle', 80);
+INSERT INTO Produit VALUES (1, 'Pack de 160 gemmes', 9.99, 'Gemmes', 80);
 INSERT INTO Produit VALUES (2, 'Skin légendaire de Mortis', 14.99, 'Cosmétique', 75);
 INSERT INTO Produit VALUES (3, 'Brawl Pass', 8.99, 'Pass', 85);
 INSERT INTO Produit VALUES (4, 'Brawl Pass Plus', 12.99, 'Pass', 55);
-INSERT INTO Produit VALUES (5, 'Mini Pack de 30 gemmes', 4.99, 'Ressource virtuelle', 70);
+INSERT INTO Produit VALUES (5, 'Mini Pack de 30 gemmes', 4.99, 'Gemmes', 70);
 INSERT INTO Produit VALUES (6, 'Skin Ange Colt', 3.99, 'Cosmétique', 40);
 INSERT INTO Produit VALUES (7, 'Offre de Débutant', 2.99, 'Pack d’entrée', 70);
 INSERT INTO Produit VALUES (8, 'Pack 10000 d’or', 10.99, 'Ressource virtuelle', 20);
