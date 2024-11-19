@@ -186,3 +186,105 @@ INSERT INTO Achats VALUES
 (8, 10, 8, 6, 7, 14, 5, 6, 8.99, 3); -- pieces
 INSERT INTO Achats VALUES 
 (9, 10, 8, 11, 7, 14, 5, 7, 10.99, 2); -- pieces
+
+----------  DATA MART 2 -------------------------
+
+INSERT INTO Brawler VALUES (1, 'Shelly', 'Commune', 'Combattant', DATE '2017-06-15', 7400, 'Rapide', NULL, 3000, 'Long', 'Normal', 5760, 'Long');
+INSERT INTO Brawler VALUES (2, 'Colt', 'Rare', 'Tireur', DATE '2017-06-15', 5600, 'Normal', NULL, 4320, 'Long', 'Rapide', 7680, 'Tres long');
+INSERT INTO Brawler VALUES (3, 'El Primo', 'Super Rare', 'Tank', DATE '2017-08-06', 12000, 'Rapide', 'Charge ulti des degats recus', 3040, 'Court', 'Tres rapide', 1920, 'Long');
+INSERT INTO Brawler VALUES (4, 'Barley', 'Rare', 'Lanceur', DATE '2017-06-15', 4800, 'Normal', 'Degats par seconde', 1600, 'Long', 'Lente', 1600, 'Tres long');
+INSERT INTO Brawler VALUES (5, 'Crow', 'Légendaire', 'Assassin', DATE '2017-12-21', 4800, 'Tres rapide', 'Empoisonnement', 1920, 'Long', 'Rapide', 3000, 'Long');
+INSERT INTO Brawler VALUES (6, 'Spike', 'Légendaire', 'Lanceur', DATE '2017-06-15', 5600, 'Normal', 'Attaque en épine', 1080, 'Long', 'Lente', 800, 'Long');
+INSERT INTO Brawler VALUES (7, 'Leon', 'Légendaire', 'Assassin', DATE '2018-11-21', 6800, 'Tres rapide', 'Invisibilité pendant ulti', 3840, 'Tres long', 'Normal', 0, 'Duree de 6 secondes');
+INSERT INTO Brawler VALUES (8, 'Sandy', 'Legendaire', 'Contrôleur', DATE '2019-09-18', 7600, 'Rapide', 'Invisibilite groupale pendant ulti', 1800, 'Normal', 'Normal', 0, 'Long');
+INSERT INTO Brawler VALUES (9, 'Amber', 'Legendaire', 'Combattant', DATE '2020-10-23', 6400, 'Normal', NULL, 4200, 'Long', 'Tres rapide', 3840, 'Long');
+INSERT INTO Brawler VALUES (10, 'Belle', 'Epique', 'Sniper', DATE '2021-04-07', 5200, 'Normal', 'Projectile rebondissant avec moitie degats', 2080, 'Tres long', 'Rapide', 1000, 'Tres long');
+INSERT INTO Brawler VALUES (11, 'Willow', 'Mythique', 'Controleur', DATE '2023-03-28', 5600, 'Normal', 'Empoisonnement et control de brawler ennemi pendant ulti', 800, 'Long', 'Lent', 0, 'Long et duree de 4 secondes');
+INSERT INTO Brawler VALUES (12, 'Larry & Lawrie', 'Mythique', 'Controleur', DATE '2023-03-28', 6000, 'Normal', 'Attaque deux fois et invoque un robot pour son ulti', 1600, 'Long', 'Lent', 1400, '6000 de vie pour le robot');
+INSERT INTO Brawler VALUES (13, 'Kenji', 'Legendaire', 'Assassin', DATE '2024-10-06', 9000, 'Rapide', 'Attaque de deux façons différentes', 2500, 'Court', 'Lent', 2500, 'Tres long, attaque en croix');
+
+
+INSERT INTO Session_Perf VALUES (1, 45, TO_DATE('2024-11-10 14:00','YYYY-MM-DD HH24:MI'), 'Ladder', 30, 1,  300, 16, 0,0);
+INSERT INTO Session_Perf VALUES (2, 30, TO_DATE( '2024-11-10 18:00', 'YYYY-MM-DD HH24:MI'),'Ladder', 15, 0, 50, 8,0,0);
+INSERT INTO Session_Perf VALUES (3, 60, TO_DATE( '2024-11-12 14:00','YYYY-MM-DD HH24:MI'),'Rank',  20, 3, 0, 0, 2000, 100);
+INSERT INTO Session_Perf VALUES (4, 20, TO_DATE( '2024-11-13 10:00', 'YYYY-MM-DD HH24:MI'),'Rank',  5, 0, 0,0, 200, 300);
+INSERT INTO Session_Perf VALUES (5, 50, TO_DATE( '2024-11-13 16:00','YYYY-MM-DD HH24:MI'),'Rank', 22, 1, 0, 0, 1200,0);
+INSERT INTO Session_Perf VALUES (6, 35, TO_DATE( '2022-07-03 17:05','YYYY-MM-DD HH24:MI'),'Rank et Ladder', 12, 0, 8, 60, 200, 54);
+INSERT INTO Session_Perf VALUES (7, 55, TO_DATE( '2024-11-13 16:50','YYYY-MM-DD HH24:MI'),'Ladder',  40, 2, 300,0,500, 0);
+INSERT INTO Session_Perf VALUES (8, 25, TO_DATE( '2024-11-10 19:10', 'YYYY-MM-DD HH24:MI'),'Rank et Ladder',  15, 0, 50, 0, 180, 8);
+INSERT INTO Session_Perf VALUES (9, 40, TO_DATE( '2024-03-08 19:00', 'YYYY-MM-DD HH24:MI'),'Rank', 16, 0, 0, 0, 250,1220);
+INSERT INTO Session_Perf VALUES (10, 70 ,TO_DATE( '2024-11-13 21:00', 'YYYY-MM-DD HH24:MI'), 'Rank et Ladder', 60, 4, 160, 8, 1200, 1000);
+INSERT INTO Session_Perf VALUES (11, 30 ,TO_DATE( '2024-11-13 23:00', 'YYYY-MM-DD HH24:MI'), 'Rank ', 10, 0, 0, 0, 0, 1000);
+INSERT INTO Session_Perf VALUES (12, 30 ,TO_DATE( '2024-11-13 18:00', 'YYYY-MM-DD HH24:MI'), 'Rank ', 10, 0, 0, 0, 400, 600);
+
+
+
+
+INSERT INTO Date_Perf VALUES (1, DATE '2021-01-01', 1, 01, 2021, 'Non', 'Hiver');
+INSERT INTO Date_Perf VALUES (2, DATE '2022-06-02', 2, 06, 2022, 'Oui', 'Ete');
+INSERT INTO Date_Perf VALUES (3, DATE '2022-07-03', 3, 07, 2022, 'Oui', 'Ete');
+INSERT INTO Date_Perf VALUES (4, DATE '2022-11-04', 4, 11, 2022, 'Non', 'Automne');
+INSERT INTO Date_Perf VALUES (5, DATE '2023-04-05', 5, 04, 2023, 'Non', 'Printemps');
+INSERT INTO Date_Perf VALUES (6, DATE '2023-05-06', 6, 05, 2023, 'Non', 'Printemps');
+INSERT INTO Date_Perf VALUES (7, DATE '2023-06-07', 7, 06, 2023, 'Oui', 'Ete');
+INSERT INTO Date_Perf VALUES (8, DATE '2024-03-08', 8, 03, 2024, 'Non', 'Hiver');
+INSERT INTO Date_Perf VALUES (9, DATE '2024-08-09', 9, 08, 2024, 'Oui', 'Ete');
+INSERT INTO Date_Perf VALUES (10, DATE '2024-11-13', 13, 11, 2024, 'Non', 'Automne');
+INSERT INTO Date_Perf VALUES (11, DATE '2024-11-10', 10, 11, 2024, 'Non', 'Automne');
+
+
+
+
+INSERT INTO ModeJeu VALUES (1, 'Showdown', 'Survivre', 'Skull Creek', 0.85);
+INSERT INTO ModeJeu VALUES (2, 'Brawl Ball', 'Marquer des buts', 'Super Stadium', 0.70);
+INSERT INTO ModeJeu VALUES (3, 'Heist', 'Protéger le coffre', 'Safe Zone', 0.60);
+INSERT INTO ModeJeu VALUES (4, 'Gem Grab', 'Collecter des gemmes', 'Crystal Arcade', 0.75);
+INSERT INTO ModeJeu VALUES (5, 'Bounty', 'Éliminer les ennemis', 'Snake Prairie', 0.65);
+INSERT INTO ModeJeu VALUES (6, 'Hot Zone', 'Contrôler la zone', 'Split', 0.50);
+INSERT INTO ModeJeu VALUES (7, 'Knockout', 'Éliminer tous les adversaires', 'Goldarm Gulch', 0.65);
+INSERT INTO ModeJeu VALUES (8, 'Duo Showdown', 'Survivre en duo', 'Double Trouble', 0.80);
+INSERT INTO ModeJeu VALUES (9, 'Ranked', 'Compétitif', 'Random Map', 0.90);
+
+
+INSERT INTO NiveauJoueur VALUES (1, 'Joueur Débutant', 1);
+INSERT INTO NiveauJoueur VALUES (2, 'Joueur Intermédiaire', 2);
+INSERT INTO NiveauJoueur VALUES (3, 'Joueur Avancé', 3);
+INSERT INTO NiveauJoueur VALUES (4, 'Joueur Expert', 4);
+INSERT INTO NiveauJoueur VALUES (5, 'Joueur Maître', 5);
+
+
+-- PerfPersonnage : performances des brawlers par session, joueur, mode et date
+INSERT INTO PerfPersonnage VALUES (1, 4, 6, 4, 3, 0.1, 20, 200000, 0.22, 0.0, FALSE); --ok shelly session 6
+
+INSERT INTO PerfPersonnage VALUES (2, 2, 9, 9, 8, 0.6, 6, 240000, 0.37, 0.0, FALSE); --ok colt session 9
+INSERT INTO PerfPersonnage VALUES (3, 2, 9, 9, 8, 0.5, 10, 450000, 0.63, 0.0, FALSE); --ok primo session 9
+
+INSERT INTO PerfPersonnage VALUES (4, 5, 1, 2, 11, 1.0, 20, 1000000, 0.67, 0.0, FALSE); -- ok barley session 1
+INSERT INTO PerfPersonnage VALUES (5, 5, 1, 3, 11, 0.6, 5, 150000, 0.17, 0.0, FALSE); -- ok crow session 1
+INSERT INTO PerfPersonnage VALUES (6, 5, 1, 6, 11, 0.75, 5, 25000, 0.17, 0.0, FALSE); -- ok spike session 1
+
+INSERT INTO PerfPersonnage VALUES (9, 2, 6, 9, 3, 0.0, 9, 250000,0.75, 0.0,FALSE); -- ok amber session 6
+INSERT INTO PerfPersonnage VALUES (2, 2, 6, 3, 3, 0.67, 3, 150000, 0.25, 0.0,FALSE); -- ok colt session 6
+
+INSERT INTO PerfPersonnage VALUES (7, 1, 10, 2, 10, 0.5, 2, 50000, 0.09, 0.0, FALSE); -- ok leon session 10 brawl ball
+INSERT INTO PerfPersonnage VALUES (10, 1, 10, 5, 10, 0.5, 2, 70000, 1.0, 0.0, FALSE); -- ok belle session 10 bounty
+INSERT INTO PerfPersonnage VALUES (1, 1, 10, 7, 10, 0.0, 2, 40000, 1.0, 0.0, FALSE); -- ok shelly session 10 knockout
+INSERT INTO PerfPersonnage VALUES (2, 1, 10, 8, 10, 0.5, 2, 65000, 1.0, 0.0, FALSE); -- ok colt session 10 duo showdown
+INSERT INTO PerfPersonnage VALUES (4, 1, 10, 4, 10, 1.0, 2, 50000, 0.16, 0.0, FALSE); -- ok barley session 10 gem grab
+INSERT INTO PerfPersonnage VALUES (13, 1, 10, 2, 10, 0.9, 20, 1100000, 0.6, 0.0,FALSE); -- ok kenji session 10 brawl ball
+INSERT INTO PerfPersonnage VALUES (13, 1, 10, 4, 10, 1.0, 10, 550000, 0.6, 0.0,FALSE); -- ok kenji session 10 gem grab
+INSERT INTO PerfPersonnage VALUES (13, 1, 10, 9, 10, 1.0, 6, 250000, 1.0, 0.0,FALSE); -- session 10 rank pas banni
+INSERT INTO PerfPersonnage VALUES (13, 1, 11, 9, 10, NULL,NULL , NULL, NULL, 0.7,TRUE); -- ok kenji session 10 banni
+INSERT INTO PerfPersonnage VALUES (9, 1, 11, 9, 10, 0.14,14 , 100000, 0.28, 1.0,FALSE); -- ok amber session 10 quand kenji banni
+
+
+
+INSERT INTO PerfPersonnage VALUES (9, 4, 9, 9, 8, 0.1, 12, 300000, 0.8, 0.0,FALSE); -- ok amber session 8
+INSERT INTO PerfPersonnage VALUES (11, 4, 9, 9, 8, 1.0, 4, 220000, 0.2, 0.0,FALSE); -- ok willow session 8
+
+
+INSERT INTO PerfPersonnage VALUES (12, 1, 7, 2, 10, 1.0, 30, 2400000, 0.75, 1.0, FALSE); --ok Larry session 7
+INSERT INTO PerfPersonnage VALUES (12, 1, 7, 9, 10, 1.0, 1, 60000, 1.0, 0.0, FALSE); --ok Larry session 7 rank
+INSERT INTO PerfPersonnage VALUES (12, 1, 12, 9, 10, NULL, NULL, NULL, NULL, 0.9, TRUE); --ok Larry session 7 banni
+INSERT INTO PerfPersonnage VALUES (10 ,1, 12, 9, 10, 0.4, 10, 100000, 1.0, 0.0, FALSE); --ok Larry session 7 banni
+

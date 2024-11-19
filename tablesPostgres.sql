@@ -1,7 +1,8 @@
 --pour postgres
 
 -- Suppression des vues
-
+DROP MATERIALIZED VIEW IF EXISTS Vue_Perf_Personnages;
+DROP MATERIALIZED VIEW IF EXISTS perfpersonnage_aggregats;
 DROP VIEW IF EXISTS v_joueurs;
 DROP VIEW IF EXISTS v_Date;
 DROP VIEW IF EXISTS v_Session;

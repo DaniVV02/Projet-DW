@@ -45,6 +45,8 @@ ORDER BY
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --apres les remarques du prof voila une vue materialiser qui regroupe toutes les requetes du fichier requetesPersonnage.sql
+-- Supprimer la vue si elle existe déjà
+DROP MATERIALIZED VIEW IF EXISTS Vue_Perf_Personnages;
 
 CREATE MATERIALIZED VIEW Vue_Perf_Personnages AS
 SELECT 
