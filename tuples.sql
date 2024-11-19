@@ -219,11 +219,12 @@ INSERT INTO Session_Perf VALUES (3, 60, TO_DATE( '2024-11-12 14:00','YYYY-MM-DD 
 INSERT INTO Session_Perf VALUES (4, 20, TO_DATE( '2024-11-13 10:00', 'YYYY-MM-DD HH24:MI'),'Rank',  5, 0, 0,0, 200, 300);
 INSERT INTO Session_Perf VALUES (5, 50, TO_DATE( '2024-11-13 16:00','YYYY-MM-DD HH24:MI'),'Rank', 22, 1, 0, 0, 1200,0);
 INSERT INTO Session_Perf VALUES (6, 35, TO_DATE( '2022-07-03 17:05','YYYY-MM-DD HH24:MI'),'Rank et Ladder', 12, 0, 8, 60, 200, 54);
-INSERT INTO Session_Perf VALUES (7, 55, TO_DATE( '2024-11-13 16:50','YYYY-MM-DD HH24:MI'),'Ladder',  40, 2, 300,0,500, 0);
+INSERT INTO Session_Perf VALUES (7, 55, TO_DATE( '2024-11-13 16:50','YYYY-MM-DD HH24:MI'),'Ladder',  30, 2, 300,0,0, 0);
 INSERT INTO Session_Perf VALUES (8, 25, TO_DATE( '2024-11-10 19:10', 'YYYY-MM-DD HH24:MI'),'Rank et Ladder',  15, 0, 50, 0, 180, 8);
 INSERT INTO Session_Perf VALUES (9, 40, TO_DATE( '2024-03-08 19:00', 'YYYY-MM-DD HH24:MI'),'Rank', 16, 0, 0, 0, 250,1220);
 INSERT INTO Session_Perf VALUES (10, 70 ,TO_DATE( '2024-11-13 21:00', 'YYYY-MM-DD HH24:MI'), 'Rank et Ladder', 40, 4, 160, 8, 1200, 1000);
 INSERT INTO Session_Perf VALUES (11, 45, TO_DATE('2024-11-10 22:30','YYYY-MM-DD HH24:MI'), 'Rank', 20, 1,  0, 0, 0,1000);
+INSERT INTO Session_Perf VALUES (12, 25, TO_DATE( '2024-11-13 18:30','YYYY-MM-DD HH24:MI'),'Rank',  10, 2, 0,0,500, 0);
 
 
 INSERT INTO Date_Perf VALUES (1, DATE '2021-01-01', 1, 01, 2021, 'Non', 'Hiver');
@@ -290,6 +291,8 @@ INSERT INTO PerfPersonnage VALUES (11, 4, 9, 9, 8, 1.0, 4, 220000, 0.2, 0.0,FALS
 
 
 INSERT INTO PerfPersonnage VALUES (12, 1, 7, 2, 10, 1.0, 30, 2400000, 0.75, 1.0, FALSE); --ok Larry session 7
-INSERT INTO PerfPersonnage VALUES (12, 1, 7, 2, 10, 1.0, 1, 60000, 1.0, 0.0, FALSE); --ok Larry session 7 rank
-INSERT INTO PerfPersonnage VALUES (12 1, 7, 9, 10, NULL, NULL, NULL, NULL, 0.9, TRUE); --ok Larry session 7 banni
+INSERT INTO PerfPersonnage VALUES (12, 1, 7, 9, 10, 1.0, 1, 60000, 1.0, 0.0, FALSE); --ok Larry session 7 rank
+INSERT INTO PerfPersonnage VALUES (12, 1, 14, 9, 10, NULL, NULL, NULL, NULL, 0.9, TRUE); --ok Larry session 7 banni
+INSERT INTO PerfPersonnage VALUES (9 ,1, 14, 9, 10, 0.5, 10, 280000, 1.0,0.0, FALSE); --ok Larry session 7 banni
+
 
