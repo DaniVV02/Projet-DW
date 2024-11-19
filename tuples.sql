@@ -50,15 +50,15 @@ INSERT INTO Produit VALUES (14, 'Boite godzilla', 0.99, 'Ressource virtuelle', 6
 
 -- Insertion dans la table Promotion
 INSERT INTO Promotion VALUES (1, 'Réduction prix Skins', 20.00, 12, 'Hebdomadaire', 80);
-INSERT INTO Promotion VALUES (2, 'Black Friday', 500, 50.00, 3, 'Annuel', 95);
-INSERT INTO Promotion VALUES (3, 'Promo Evenement', 200, 15.00, 14, 'Saisonnière', 75);
-INSERT INTO Promotion VALUES (4, 'Offre Weekend', 50, 10.00, 2, 'Hebdomadaire', 85);
-INSERT INTO Promotion VALUES (5, 'Promo Été', 150, 25.00, 10, 'Saisonnière', 70);
-INSERT INTO Promotion VALUES (6, 'Offre Noël', 300, 30.00, 5, 'Annuel', 95);
-INSERT INTO Promotion VALUES (7, 'A moitie prix', 50, 5.00, 1, 'Ponctuelle', 60);
+INSERT INTO Promotion VALUES (2, 'Black Friday', 50.00, 3, 'Annuel', 95);
+INSERT INTO Promotion VALUES (3, 'Promo Evenement', 15.00, 14, 'Saisonnière', 75);
+INSERT INTO Promotion VALUES (4, 'Offre Weekend', 10.00, 2, 'Hebdomadaire', 85);
+INSERT INTO Promotion VALUES (5, 'Promo Été', 25.00, 10, 'Saisonnière', 70);
+INSERT INTO Promotion VALUES (6, 'Offre Noël', 30.00, 5, 'Annuel', 95);
+INSERT INTO Promotion VALUES (7, 'A moitie prix', 5.00, 1, 'Ponctuelle', 60);
 INSERT INTO Promotion VALUES (8, 'Promo brawl pass', 20.00, 14, 'Annuel', 85);
-INSERT INTO Promotion VALUES (9, 'Offre Saint-Valentin', 100, 20.00, 7, 'Annuel', 85);
-INSERT INTO Promotion VALUES (10, 'Promo Nouvelle Année', 250, 35.00, 4, 'Annuel', 90);
+INSERT INTO Promotion VALUES (9, 'Offre Saint-Valentin',  20.00, 7, 'Annuel', 85);
+INSERT INTO Promotion VALUES (10, 'Promo Nouvelle Année', 35.00, 4, 'Annuel', 90);
 INSERT INTO Promotion VALUES (11, 'Aucune', 0.0 , 0, 'Auucne', 0);
 
 
@@ -259,36 +259,36 @@ INSERT INTO NiveauJoueur VALUES (5, 'Joueur Maître', 5);
 
 
 -- PerfPersonnage : performances des brawlers par session, joueur, mode et date
-INSERT INTO PerfPersonnage VALUES (1, 4, 6, 4, 3, 0.1, 20, 200000, 0.22, 0.0, 0); --ok shelly session 6
+INSERT INTO PerfPersonnage VALUES (1, 4, 6, 4, 3, 0.1, 20, 200000, 0.22, 0.0, FALSE); --ok shelly session 6
 
-INSERT INTO PerfPersonnage VALUES (2, 2, 9, 9, 8, 0.6, 6, 240000, 0.37, 0.0, 0); --ok colt session 9
-INSERT INTO PerfPersonnage VALUES (3, 2, 9, 9, 8, 0.5, 10, 450000, 0.63, 0.0, 0); --ok primo session 9
+INSERT INTO PerfPersonnage VALUES (2, 2, 9, 9, 8, 0.6, 6, 240000, 0.37, 0.0, FALSE); --ok colt session 9
+INSERT INTO PerfPersonnage VALUES (3, 2, 9, 9, 8, 0.5, 10, 450000, 0.63, 0.0, FALSE); --ok primo session 9
 
-INSERT INTO PerfPersonnage VALUES (4, 5, 1, 2, 11, 1.0, 20, 1000000, 0.67, 0.0, 0); -- ok barley session 1
-INSERT INTO PerfPersonnage VALUES (5, 5, 1, 3, 11, 0.6, 5, 150000, 0.17, 0.0, 0); -- ok crow session 1
-INSERT INTO PerfPersonnage VALUES (6, 5, 1, 6, 11, 0.75, 5, 25000, 0.17, 0.0, 0); -- ok spike session 1
+INSERT INTO PerfPersonnage VALUES (4, 5, 1, 2, 11, 1.0, 20, 1000000, 0.67, 0.0, FALSE); -- ok barley session 1
+INSERT INTO PerfPersonnage VALUES (5, 5, 1, 3, 11, 0.6, 5, 150000, 0.17, 0.0, FALSE); -- ok crow session 1
+INSERT INTO PerfPersonnage VALUES (6, 5, 1, 6, 11, 0.75, 5, 25000, 0.17, 0.0, FALSE); -- ok spike session 1
 
-INSERT INTO PerfPersonnage VALUES (9, 2, 6, 9, 3, 0.0, 9, 250000,0.75, 0.0,0); -- ok amber session 6
-INSERT INTO PerfPersonnage VALUES (2, 2, 6, 3, 3, 0.67, 3, 150000, 0.25, 0.0,0); -- ok colt session 6
+INSERT INTO PerfPersonnage VALUES (9, 2, 6, 9, 3, 0.0, 9, 250000,0.75, 0.0,FALSE); -- ok amber session 6
+INSERT INTO PerfPersonnage VALUES (2, 2, 6, 3, 3, 0.67, 3, 150000, 0.25, 0.0,FALSE); -- ok colt session 6
 
-INSERT INTO PerfPersonnage VALUES (7, 1, 10, 2, 10, 0.5, 2, 50000, 0.09, 0.0, 0); -- ok leon session 10 brawl ball
-INSERT INTO PerfPersonnage VALUES (10, 1, 10, 5, 10, 0.5, 2, 70000, 1.0, 0.0, 0); -- ok belle session 10 bounty
-INSERT INTO PerfPersonnage VALUES (1, 1, 10, 7, 10, 0.0, 2, 40000, 1.0, 0.0, 0); -- ok shelly session 10 knockout
-INSERT INTO PerfPersonnage VALUES (2, 1, 10, 8, 10, 0.5, 2, 65000, 1.0, 0.0, 0); -- ok colt session 10 duo showdown
-INSERT INTO PerfPersonnage VALUES (4, 1, 10, 4, 10, 1.0, 2, 50000, 0.16, 0.0, 0); -- ok barley session 10 gem grab
-INSERT INTO PerfPersonnage VALUES (13, 1, 10, 2, 10, 0.9, 20, 1100000, 0.6, 0.0,0); -- ok kenji session 10 brawl ball
-INSERT INTO PerfPersonnage VALUES (13, 1, 10, 4, 10, 1.0, 10, 550000, 0.6, 0.0,0); -- ok kenji session 10 gem grab
-INSERT INTO PerfPersonnage VALUES (13, 1, 10, 9, 10, 1.0, 6, 250000, 1.0, 0.0,0); -- session 10 rank pas banni
-INSERT INTO PerfPersonnage VALUES (13, 1, 10, 9, 10, NULL,NULL , NULL, NULL, 0.7,1); -- ok kenji session 10 banni
-INSERT INTO PerfPersonnage VALUES (9, 1, 10, 9, 10, 0.14,14 , 100000, 0.28, 0.0,0); -- ok amber session 10 quand kenji banni
-
-
-
-INSERT INTO PerfPersonnage VALUES (9, 4, 9, 9, 8, 0.1, 12, 300000, 0.8, 0.0.0); -- ok amber session 8
-INSERT INTO PerfPersonnage VALUES (11, 4, 9, 9, 8, 1.0, 4, 220000, 0.2, 0.0,0); -- ok willow session 8
+INSERT INTO PerfPersonnage VALUES (7, 1, 10, 2, 10, 0.5, 2, 50000, 0.09, 0.0, FALSE); -- ok leon session 10 brawl ball
+INSERT INTO PerfPersonnage VALUES (10, 1, 10, 5, 10, 0.5, 2, 70000, 1.0, 0.0, FALSE); -- ok belle session 10 bounty
+INSERT INTO PerfPersonnage VALUES (1, 1, 10, 7, 10, 0.0, 2, 40000, 1.0, 0.0, FALSE); -- ok shelly session 10 knockout
+INSERT INTO PerfPersonnage VALUES (2, 1, 10, 8, 10, 0.5, 2, 65000, 1.0, 0.0, FALSE); -- ok colt session 10 duo showdown
+INSERT INTO PerfPersonnage VALUES (4, 1, 10, 4, 10, 1.0, 2, 50000, 0.16, 0.0, FALSE); -- ok barley session 10 gem grab
+INSERT INTO PerfPersonnage VALUES (13, 1, 10, 2, 10, 0.9, 20, 1100000, 0.6, 0.0,FALSE); -- ok kenji session 10 brawl ball
+INSERT INTO PerfPersonnage VALUES (13, 1, 10, 4, 10, 1.0, 10, 550000, 0.6, 0.0,FALSE); -- ok kenji session 10 gem grab
+INSERT INTO PerfPersonnage VALUES (13, 1, 10, 9, 10, 1.0, 6, 250000, 1.0, 0.0,FALSE); -- session 10 rank pas banni
+INSERT INTO PerfPersonnage VALUES (13, 1, 10, 9, 10, NULL,NULL , NULL, NULL, 0.7,TRUE); -- ok kenji session 10 banni
+INSERT INTO PerfPersonnage VALUES (9, 1, 10, 9, 10, 0.14,14 , 100000, 0.28, 0.0,FALSE); -- ok amber session 10 quand kenji banni
 
 
-INSERT INTO PerfPersonnage VALUES (12, 1, 7, 2, 10, 1.0, 30, 2400000, 0.75, 1.0, 0); --ok Larry session 7
-INSERT INTO PerfPersonnage VALUES (12, 1, 7, 2, 10, 1.0, 1, 60000, 1.0, 0.0, 0); --ok Larry session 7 rank
-INSERT INTO PerfPersonnage VALUES (12 1, 7, 9, 10, NULL, NULL, NULL, NULL, 0.9, 1); --ok Larry session 7 banni
+
+INSERT INTO PerfPersonnage VALUES (9, 4, 9, 9, 8, 0.1, 12, 300000, 0.8, 0.0.FALSE); -- ok amber session 8
+INSERT INTO PerfPersonnage VALUES (11, 4, 9, 9, 8, 1.0, 4, 220000, 0.2, 0.0,FALSE); -- ok willow session 8
+
+
+INSERT INTO PerfPersonnage VALUES (12, 1, 7, 2, 10, 1.0, 30, 2400000, 0.75, 1.0, FALSE); --ok Larry session 7
+INSERT INTO PerfPersonnage VALUES (12, 1, 7, 2, 10, 1.0, 1, 60000, 1.0, 0.0, FALSE); --ok Larry session 7 rank
+INSERT INTO PerfPersonnage VALUES (12 1, 7, 9, 10, NULL, NULL, NULL, NULL, 0.9, TRUE); --ok Larry session 7 banni
 
