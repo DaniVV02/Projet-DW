@@ -3,7 +3,7 @@
 SELECT 
     B.Nom AS Nom_Brawler,
     D.Saison,
-    COUNT(P.IdSession) AS Total_Sessions
+    COUNT(P.IdSession_Perf) AS Total_Sessions
 FROM 
     PerfPersonnage P
 JOIN 
@@ -36,7 +36,7 @@ SELECT
     B.Nom AS Nom_Brawler,
     NJ.TypeJoueur,
     AVG(P.Taux_Victoire) AS Taux_Victoire_Moyen,
-    COUNT(P.IdSession) AS Total_Sessions
+    COUNT(P.IdSession_Perf) AS Total_Sessions
 FROM 
     PerfPersonnage P
 JOIN 

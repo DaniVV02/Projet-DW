@@ -41,36 +41,19 @@ ORDER BY
 
 
 --traitement 3     
-SELECT 
-    e.IdEvenement, 
-    e.Type_evenement, 
-    d.Date_achats, 
-    CASE
-        WHEN d.Date_achats < (CURRENT_DATE - e.Duree) THEN 'Avant'
-        WHEN d.Date_achats BETWEEN (CURRENT_DATE - e.Duree) AND CURRENT_DATE THEN 'Pendant'
-        ELSE 'Après'
-    END AS Periode,
-    SUM(a.Montant_achat) AS MontantTotal, 
-    COUNT(a.IdProduit) AS NombreAchats
-FROM 
-    Achats a
-JOIN 
-    Evenement e ON a.IdEvenement = e.IdEvenement
-JOIN 
-    Date_Achats d ON a.IdDate = d.IdDate
-WHERE 
-    d.Date_achats BETWEEN 
-    (CURRENT_DATE - (e.Duree * 2)) AND 
-    (CURRENT_DATE + (e.Duree * 2))
-GROUP BY 
-    e.IdEvenement, e.Type_evenement, d.Date_achats, 
-    CASE
-        WHEN d.Date_achats < (CURRENT_DATE - e.Duree) THEN 'Avant'
-        WHEN d.Date_achats BETWEEN (CURRENT_DATE - e.Duree) AND CURRENT_DATE THEN 'Pendant'
-        ELSE 'Après'
-    END
-ORDER BY 
-    e.IdEvenement, d.Date_achats;
+SELECT
+    e.IdEvenement,
+    e.Type_evenement,
+    e.date_debut,
+    e.date_fin,
+    SUM(CASE WHEN da.Date_achats < e.date_debut THEN a.Nombre_achats ELSE 0 END) AS Achats_pre_evenement,
+    SUM(CASE WHEN da.Date_achats BETWEEN e.date_debut AND e.date_fin THEN a.Nombre_achats ELSE 0 END) AS Achats_pendant_evenement,
+    SUM(CASE WHEN da.Date_achats > e.date_fin THEN a.Nombre_achats ELSE 0 END) AS Achats_post_evenement
+FROM Evenement e
+JOIN Achats a ON e.IdEvenement = a.IdEvenement
+JOIN Date_Achats da ON a.IdDate = da.IdDate
+GROUP BY e.IdEvenement, e.Type_evenement, e.date_debut, e.date_fin
+ORDER BY e.date_debut;
 
 
 --traitement 4
@@ -113,3 +96,25 @@ GROUP BY
     p.IdPromotion, p.TypeOffre, d.Date_achats
 ORDER BY 
     p.IdPromotion, d.Date_achats;
+
+
+--requetes 6:Analyser les achats selon le type de produit et la saison
+SELECT d.Saison, tp.TypeProduit, SUM(a.Montant_achat) AS Total_Achats
+FROM Achats a
+JOIN Date_Achats d ON a.IdDate = d.IdDate
+JOIN TypeProduit tp ON a.IdTypeProduit = tp.IdTypeProduit
+GROUP BY d.Saison, tp.TypeProduit
+ORDER BY d.Saison, Total_Achats DESC;
+
+--requete 7:Étudier la répartition des achats par tranche horaire :
+SELECT 
+    t.Heure AS Heure, 
+    SUM(a.Montant_achat) AS Total_Achats
+FROM 
+    Achats a
+JOIN 
+    Temps t ON a.IdTemps = t.IdTemps
+GROUP BY 
+    t.Heure
+ORDER BY 
+    t.Heure;

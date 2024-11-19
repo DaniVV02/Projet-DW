@@ -1,3 +1,4 @@
+
 PROMPT "Suppression des relations existantes"
 BEGIN
    EXECUTE IMMEDIATE 'DROP TABLE Achats';
@@ -157,46 +158,49 @@ END;
 
 -- Dimension Joueurs
 CREATE TABLE Joueurs (
-    IdJoueurs NUMBER PRIMARY KEY,
-    Age NUMBER,
-    Region VARCHAR2(50),
-    Date_Inscription DATE,
-    Type_Joueur VARCHAR2(50)
+   IdJoueurs NUMBER PRIMARY KEY,
+   Age NUMBER,
+   Region VARCHAR2(50),
+   Date_Inscription DATE,
+   Type_Joueur VARCHAR2(50)
 );
 
 -- Dimension Évènement
 CREATE TABLE Evenement (
-    IdEvenement NUMBER PRIMARY KEY,
-    Type_evenement VARCHAR2(50),
-    Duree INT, -- Durée en jours
-    Description_evenement VARCHAR2(255),
-    Recompense_possible VARCHAR2(255)
+   IdEvenement NUMBER PRIMARY KEY,
+   Type_evenement VARCHAR2(50),
+   Duree INT, -- Durée en jours
+   Description_evenement VARCHAR2(255),
+   Recompense_possible VARCHAR2(255),
+   date_debut DATE,
+   date_fin DATE
 );
 
 -- Dimension Produit
 CREATE TABLE Produit (
-    IdProduit NUMBER PRIMARY KEY,
-    Nom_Produit VARCHAR2(100),
-    Prix_unitaire NUMBER(10, 2), -- Prix unitaire avec 2 décimales
-    Categorie VARCHAR2(50),
-    Popularite NUMBER
+   IdProduit NUMBER PRIMARY KEY,
+   Nom_Produit VARCHAR2(100),
+   Prix_unitaire NUMBER(10, 2), -- Prix unitaire avec 2 décimales
+   Categorie VARCHAR2(50),
+   Popularite NUMBER
 );
 
 -- Dimension Date
 CREATE TABLE Date_Achats (
-    IdDate NUMBER PRIMARY KEY,
-    Date_achats DATE,
-    Jour NUMBER,
-    Mois NUMBER,
-    Annee NUMBER,
-    Periode_vacances VARCHAR2(50),
-    Saison VARCHAR2(50)
+   IdDate NUMBER PRIMARY KEY,
+   Date_achats DATE,
+   Jour NUMBER,
+   Mois NUMBER,
+   Annee NUMBER,
+   Periode_vacances VARCHAR2(50),
+   Saison VARCHAR2(50)
 );
 
 -- Dimension Offre/Promotion
 CREATE TABLE Promotion (
     IdPromotion NUMBER PRIMARY KEY,
     TypeOffre VARCHAR2(50),
+    --Cout_Promotion NUMBER(10, 2),
     Remise_Promotion NUMBER(5, 2), -- Remise en pourcentage
     Duree NUMBER, -- Durée en jours
     Frequence VARCHAR2(50),

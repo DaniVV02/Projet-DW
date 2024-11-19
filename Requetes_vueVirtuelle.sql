@@ -23,86 +23,64 @@ ORDER BY
 
 --traitement 2
 SELECT 
-    v_joueurs.IdJoueurs, 
+    v_j.IdJoueurs, 
     SUM(a.Nombre_achats) AS TotalAchats, 
-    AVG(v_Session.Duree_Session) AS MoyenneDureeSession, 
-    AVG(v_Session.Nombre_parties) AS MoyenneParties
+    AVG(v_s.Duree_Session_Minutes) AS MoyenneDureeSession, 
+    AVG(v_s.Nombre_parties) AS MoyenneParties
 FROM 
     Achats a
 JOIN 
-    v_joueurs ON a.IdJoueurs = v_joueurs.IdJoueurs
+    v_joueurs v_j ON a.IdJoueurs = v_j.IdJoueurs
 JOIN 
-    v_Session sa ON a.IdSession_Achats = sa.IdSession_Achats
+    v_Session v_s ON a.IdSession_Achats = v_s.IdSession_Perf 
+                   AND v_s.Source = 'Achats'
 GROUP BY 
-    v_joueurs.IdJoueurs
+    v_j.IdJoueurs
 ORDER BY 
     TotalAchats DESC;
 
+
+
 --traitement 3
-SELECT 
-    e.IdEvenement, 
-    e.Type_evenement, 
-    v_Date.Date_Complete AS DateAchats, 
-    CASE
-        WHEN v_Date.Date_Complete < (SYSDATE - e.Duree) THEN 'Avant'
-        WHEN v_Date.Date_Complete BETWEEN (SYSDATE - e.Duree) AND SYSDATE THEN 'Pendant'
-        ELSE 'Après'
-    END AS Periode,
-    SUM(a.Montant_achat) AS MontantTotal, 
-    COUNT(a.IdProduit) AS NombreAchats
-FROM 
-    Achats a
-JOIN 
-    Evenement e ON a.IdEvenement = e.IdEvenement
-JOIN 
-    v_Date ON a.IdDate = v_Date.IdDate
-WHERE 
-    v_Date.Date_Complete BETWEEN 
-    (SYSDATE - (e.Duree * 2)) AND 
-    (SYSDATE + (e.Duree * 2))
-GROUP BY 
-    e.IdEvenement, e.Type_evenement, v_Date.Date_Complete, 
-    CASE
-        WHEN v_Date.Date_Complete < (SYSDATE - e.Duree) THEN 'Avant'
-        WHEN v_Date.Date_Complete BETWEEN (SYSDATE - e.Duree) AND SYSDATE THEN 'Pendant'
-        ELSE 'Après'
-    END
-ORDER BY 
-    e.IdEvenement, v_Date.Date_Complete;
+SELECT
+    e.IdEvenement,
+    e.Type_evenement,
+    e.date_debut,
+    e.date_fin,
+    SUM(CASE WHEN v_d.Date_Complete < e.date_debut THEN a.Nombre_achats ELSE 0 END) AS Achats_pre_evenement,
+    SUM(CASE WHEN v_d.Date_Complete BETWEEN e.date_debut AND e.date_fin THEN a.Nombre_achats ELSE 0 END) AS Achats_pendant_evenement,
+    SUM(CASE WHEN v_d.Date_Complete > e.date_fin THEN a.Nombre_achats ELSE 0 END) AS Achats_post_evenement
+FROM Evenement e
+JOIN Achats a ON e.IdEvenement = a.IdEvenement
+JOIN v_Date v_d ON a.IdDate = v_d.IdDate
+GROUP BY e.IdEvenement, e.Type_evenement, e.date_debut, e.date_fin
+ORDER BY e.date_debut;
+
 
 --traitement 4
 SELECT 
-    v_joueurs.IdJoueurs, 
-    p.Nom_Produit, 
-    p.Categorie AS TypeProduit, 
-    COUNT(a.IdProduit) AS NombreAchats, 
-    AVG(DATEDIFF(NEXT_PURCHASE.Date_achats, v_Date.Date_Complete)) AS FrequenceRachat
+    tp.TypeProduit AS Type_Produit,
+    p.Nom_Produit AS Nom_Produit,
+    COUNT(a.IdProduit) AS Nombre_Total_Achats,
+    COUNT(DISTINCT a.IdJoueurs) AS Nombre_Joueurs_Uniques,
+    ROUND(AVG(a.Nombre_achats), 2) AS Moyenne_Achats_Par_Joueur,
+    ROUND(SUM(a.Montant_achat), 2) AS Montant_Total_Achats
 FROM 
     Achats a
-JOIN 
-    v_joueurs ON a.IdJoueurs = v_joueurs.IdJoueurs
-JOIN 
-    Produit p ON a.IdProduit = p.IdProduit
-JOIN 
-    v_Date ON a.IdDate = v_Date.IdDate
-LEFT JOIN 
-    (SELECT IdJoueurs, IdProduit, MIN(IdDate) AS Date_achats 
-     FROM Achats 
-     WHERE IdProduit IN (SELECT IdProduit FROM Produit WHERE Categorie = 'Gemmes') 
-     GROUP BY IdJoueurs, IdProduit) AS NEXT_PURCHASE 
-    ON a.IdJoueurs = NEXT_PURCHASE.IdJoueurs AND a.IdProduit = NEXT_PURCHASE.IdProduit
-WHERE 
-    p.Categorie = 'Gemmes'
+INNER JOIN Produit p ON a.IdProduit = p.IdProduit
+INNER JOIN TypeProduit tp ON a.IdTypeProduit = tp.IdTypeProduit
 GROUP BY 
-    v_joueurs.IdJoueurs, p.Nom_Produit, p.Categorie
+    tp.TypeProduit, 
+    p.Nom_Produit
 ORDER BY 
-    v_joueurs.IdJoueurs, p.Nom_Produit;
+    Nombre_Total_Achats DESC, 
+    Montant_Total_Achats DESC;
 
 --traitement 5
 SELECT 
     p.IdPromotion, 
     p.TypeOffre, 
-    v_Date.Date_Complete AS DateAchats, 
+    v_d.Date_Complete, 
     SUM(a.Montant_achat) AS MontantTotal, 
     COUNT(a.IdProduit) AS NombreAchats
 FROM 
@@ -110,11 +88,43 @@ FROM
 JOIN 
     Promotion p ON a.IdPromotion = p.IdPromotion
 JOIN 
-    v_Date ON a.IdDate = v_Date.IdDate
+    v_Date v_d ON a.IdDate = v_d.IdDate
+WHERE 
+    v_d.Date_Complete BETWEEN (CURRENT_DATE - 7) AND (CURRENT_DATE + p.Duree + 7)
 GROUP BY 
-    p.IdPromotion, p.TypeOffre, v_Date.Date_Complete
+    p.IdPromotion, p.TypeOffre, v_d.Date_Complete
 ORDER BY 
-    v_Date.Date_Complete;
+    p.IdPromotion, v_d.Date_Complete;
+
+--traitement 6
+SELECT 
+    v_d.Saison, 
+    tp.TypeProduit, 
+    SUM(a.Montant_achat) AS Total_Achats
+FROM 
+    Achats a
+JOIN 
+    v_Date v_d ON a.IdDate = v_d.IdDate
+JOIN 
+    TypeProduit tp ON a.IdTypeProduit = tp.IdTypeProduit
+GROUP BY 
+    v_d.Saison, tp.TypeProduit
+ORDER BY 
+    v_d.Saison, Total_Achats DESC;
+
+--traitement 7
+SELECT 
+    t.Heure AS Heure, 
+    SUM(a.Montant_achat) AS Total_Achats
+FROM 
+    Achats a
+JOIN 
+    Temps t ON a.IdTemps = t.IdTemps
+GROUP BY 
+    t.Heure
+ORDER BY 
+    t.Heure;
+
 
 
 --actions personnage:
@@ -123,7 +133,7 @@ ORDER BY
 SELECT 
     B.Nom AS Nom_Brawler,
     VD.Saison,
-    COUNT(P.IdSession) AS Total_Sessions
+    COUNT(P.IdSession_Perf) AS Total_Sessions
 FROM 
     PerfPersonnage P
 JOIN 
@@ -160,7 +170,7 @@ SELECT
     B.Nom AS Nom_Brawler,
     NJ.TypeJoueur,
     AVG(P.Taux_Victoire) AS Taux_Victoire_Moyen,
-    COUNT(P.IdSession) AS Total_Sessions
+    COUNT(P.IdSession_Perf) AS Total_Sessions
 FROM 
     PerfPersonnage P
 JOIN 

@@ -1,10 +1,11 @@
 
+/*
 -- Création de la vue matérialisée PerfPersonnage_Aggregats qui reproupe la requête 1 et 2 du traitement 1 et 2 de requetesPersonnage.sql
 CREATE MATERIALIZED VIEW PerfPersonnage_Aggregats AS
 SELECT 
     B.Nom AS Nom_Brawler,
     D.Saison,
-    COUNT(P.IdSession) AS Total_Sessions,
+    COUNT(P.IdSession_Perf) AS Total_Sessions,
     AVG(P.Taux_Victoire) AS Taux_Victoire_Moyen
 FROM 
     PerfPersonnage P
@@ -38,7 +39,7 @@ FROM
 ORDER BY 
     Taux_Victoire_Moyen DESC;
 
-
+*/
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -53,7 +54,7 @@ SELECT
     D.Saison,
     D.Annee,
     D.Mois,
-    COUNT(P.IdSession) AS Total_Sessions,
+    COUNT(P.IdSession_Perf) AS Total_Sessions,
     AVG(P.Taux_Victoire) AS Taux_Victoire_Moyen,
     AVG(P.Degats_Totaux) AS Degats_Moyens
 FROM 
