@@ -75,31 +75,22 @@ ORDER BY
 
 --traitement 4
 SELECT 
-    j.IdJoueurs, 
-    p.Nom_Produit, 
-    p.Categorie AS TypeProduit, 
-    COUNT(a.IdProduit) AS NombreAchats, 
-    AVG(EXTRACT(EPOCH FROM (np.Date_achats - d.Date_achats)) / 86400) AS FrequenceRachat
+    tp.TypeProduit AS Type_Produit,
+    p.Nom_Produit AS Nom_Produit,
+    COUNT(a.IdProduit) AS Nombre_Total_Achats,
+    COUNT(DISTINCT a.IdJoueurs) AS Nombre_Joueurs_Uniques,
+    ROUND(AVG(a.Nombre_achats), 2) AS Moyenne_Achats_Par_Joueur,
+    ROUND(SUM(a.Montant_achat), 2) AS Montant_Total_Achats
 FROM 
     Achats a
-JOIN 
-    Joueurs j ON a.IdJoueurs = j.IdJoueurs
-JOIN 
-    Produit p ON a.IdProduit = p.IdProduit
-JOIN 
-    Date_Achats d ON a.IdDate = d.IdDate
-LEFT JOIN 
-    (SELECT IdJoueurs, IdProduit, MIN(IdDate) AS Date_achats 
-     FROM Achats 
-     WHERE IdProduit IN (SELECT IdProduit FROM Produit WHERE Categorie = 'Gemmes') 
-     GROUP BY IdJoueurs, IdProduit) AS np 
-    ON a.IdJoueurs = np.IdJoueurs AND a.IdProduit = np.IdProduit
-WHERE 
-    p.Categorie = 'Gemmes'
+INNER JOIN Produit p ON a.IdProduit = p.IdProduit
+INNER JOIN TypeProduit tp ON a.IdTypeProduit = tp.IdTypeProduit
 GROUP BY 
-    j.IdJoueurs, p.Nom_Produit, p.Categorie
+    tp.TypeProduit, 
+    p.Nom_Produit
 ORDER BY 
-    j.IdJoueurs, p.Nom_Produit;
+    Nombre_Total_Achats DESC, 
+    Montant_Total_Achats DESC;
 
 
 --traitement 5
