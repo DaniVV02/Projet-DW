@@ -1,162 +1,142 @@
---couvre la requetes 1 et 4
-CREATE MATERIALIZED VIEW AggregatedTransactions AS
+
+-- Création de la vue matérialisée PerfPersonnage_Aggregats qui reproupe la requête 1 et 2 du traitement 1 et 2 de requetesPersonnage.sql
+CREATE MATERIALIZED VIEW PerfPersonnage_Aggregats AS
 SELECT 
-    a.IdJoueurs,
-    a.IdProduit,
-    v_Date.Date_Complete AS DateAchats,
-    p.Categorie AS TypeProduit,
-    COUNT(a.IdProduit) AS NombreAchats,
-    SUM(a.Montant_achat) AS MontantTotal
+    B.Nom AS Nom_Brawler,
+    D.Saison,
+    COUNT(P.IdSession) AS Total_Sessions,
+    AVG(P.Taux_Victoire) AS Taux_Victoire_Moyen
 FROM 
-    Achats a
+    PerfPersonnage P
 JOIN 
-    Produit p ON a.IdProduit = p.IdProduit
+    Brawler B ON P.IdBrawler = B.IdBrawler
 JOIN 
-    v_Date ON a.IdDate = v_Date.IdDate
+    Date_Perf D ON P.IdDate = D.IdDate
 GROUP BY 
-    a.IdJoueurs, a.IdProduit, v_Date.Date_Complete, p.Categorie;
+    B.Nom, D.Saison;
 
 
---couvre la requetes 2 et 4
-CREATE MATERIALIZED VIEW PlayerStatistics AS
+--la requetes 1 du traitement 1 de requetesPersonnage.sql devient comme ceci:
+--total de sessions par saison
 SELECT 
-    v_joueurs.IdJoueurs,
-    SUM(a.Nombre_achats) AS TotalAchats,
-    SUM(a.Montant_achat) AS TotalDepenses,
-    AVG(sa.Duree_Session) AS MoyenneDureeSession,
-    AVG(sa.Nombre_parties) AS MoyenneParties
+    Nom_Brawler,
+    Saison,
+    Total_Sessions
 FROM 
-    Achats a
+    PerfPersonnage_Aggregats
+ORDER BY 
+    Total_Sessions DESC;
+
+--la requetes 2 du traitement 2 de requetesPersonnage.sql devient comme ceci:
+--taux de victoire moyen par saison
+SELECT 
+    Nom_Brawler,
+    Saison,
+    Taux_Victoire_Moyen
+FROM 
+    PerfPersonnage_Aggregats
+ORDER BY 
+    Taux_Victoire_Moyen DESC;
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--apres les remarques du prof voila une vue materialiser qui regroupe toutes les requetes du fichier requetesPersonnage.sql
+
+CREATE MATERIALIZED VIEW Vue_Perf_Personnages AS
+SELECT 
+    B.Nom AS Nom_Brawler,
+    M.Nom_mode AS Mode_Jeu,
+    NJ.TypeJoueur AS Niveau_Joueur,
+    D.Saison,
+    D.Annee,
+    D.Mois,
+    COUNT(P.IdSession) AS Total_Sessions,
+    AVG(P.Taux_Victoire) AS Taux_Victoire_Moyen,
+    AVG(P.Degats_Totaux) AS Degats_Moyens
+FROM 
+    PerfPersonnage P
 JOIN 
-    v_joueurs ON a.IdJoueurs = v_joueurs.IdJoueurs
+    Brawler B ON P.IdBrawler = B.IdBrawler
 LEFT JOIN 
-    Session_Achats sa ON a.IdSession_Achats = sa.IdSession_Achats
-GROUP BY 
-    v_joueurs.IdJoueurs;
-
---  couvre la requetes 3et 5
-
-CREATE MATERIALIZED VIEW EventAndPromotionAnalysis AS
-SELECT 
-    COALESCE(e.IdEvenement, p.IdPromotion) AS IdEntite,
-    CASE 
-        WHEN e.IdEvenement IS NOT NULL THEN 'Evenement'
-        ELSE 'Promotion'
-    END AS TypeEntite,
-    v_Date.Date_Complete AS DateAchats,
-    CASE
-        WHEN v_Date.Date_Complete < (SYSDATE - e.Duree) THEN 'Avant'
-        WHEN v_Date.Date_Complete BETWEEN (SYSDATE - e.Duree) AND SYSDATE THEN 'Pendant'
-        ELSE 'Après'
-    END AS Periode,
-    SUM(a.Montant_achat) AS MontantTotal,
-    COUNT(a.IdProduit) AS NombreAchats
-FROM 
-    Achats a
+    ModeJeu M ON P.IdMode = M.IdMode
 LEFT JOIN 
-    Evenement e ON a.IdEvenement = e.IdEvenement
-LEFT JOIN 
-    Promotion p ON a.IdPromotion = p.IdPromotion
+    NiveauJoueur NJ ON P.IdNiveauJoueur = NJ.IdNiveauJoueur
 JOIN 
-    v_Date ON a.IdDate = v_Date.IdDate
+    Date_Perf D ON P.IdDate = D.IdDate
 GROUP BY 
-    COALESCE(e.IdEvenement, p.IdPromotion), 
-    CASE 
-        WHEN e.IdEvenement IS NOT NULL THEN 'Evenement'
-        ELSE 'Promotion'
-    END,
-    v_Date.Date_Complete,
-    CASE
-        WHEN v_Date.Date_Complete < (SYSDATE - e.Duree) THEN 'Avant'
-        WHEN v_Date.Date_Complete BETWEEN (SYSDATE - e.Duree) AND SYSDATE THEN 'Pendant'
-        ELSE 'Après'
-    END;
+    B.Nom, M.Nom_mode, NJ.TypeJoueur, D.Saison, D.Annee, D.Mois;
 
--- couvre la requetes 1 et 5
-CREATE MATERIALIZED VIEW DailyProductSales AS
+
+--donc les requetes vont etre comme ceci:
+--requetes traitelent 1:
 SELECT 
-    v_Date.Date_Complete AS DateAchats,
-    p.Categorie AS TypeProduit,
-    SUM(a.Montant_achat) AS MontantTotal,
-    COUNT(a.IdProduit) AS NombreAchats
+    Nom_Brawler, 
+    Saison, 
+    SUM(Total_Sessions) AS Total_Sessions
 FROM 
-    Achats a
-JOIN 
-    Produit p ON a.IdProduit = p.IdProduit
-JOIN 
-    v_Date ON a.IdDate = v_Date.IdDate
+    Vue_Perf_Personnages
 GROUP BY 
-    v_Date.Date_Complete, p.Categorie;
-
-
---traitement 1
-SELECT 
-    DateAchats, 
-    IdJoueurs, 
-    TypeProduit AS TypeAchat, 
-    SUM(NombreAchats) AS TotalAchats, 
-    SUM(MontantTotal) AS MontantTotal
-FROM 
-    AggregatedTransactions
-GROUP BY 
-    DateAchats, IdJoueurs, TypeProduit
+    Nom_Brawler, Saison
 ORDER BY 
-    DateAchats, IdJoueurs, TypeProduit;
+    Total_Sessions DESC;
 
---traitement 2
+--requetes traitelent 2:
 SELECT 
-    IdJoueurs, 
-    TotalAchats, 
-    MoyenneDureeSession, 
-    MoyenneParties
+    Nom_Brawler, 
+    Saison, 
+    AVG(Taux_Victoire_Moyen) AS Taux_Victoire_Moyen
 FROM 
-    PlayerStatistics
+    Vue_Perf_Personnages
+GROUP BY 
+    Nom_Brawler, Saison
 ORDER BY 
-    TotalAchats DESC;
+    Taux_Victoire_Moyen DESC;
 
-
---traitement 3
+--requetes traitelent 3:
 SELECT 
-    IdEntite AS IdEvenement, 
-    TypeEntite AS Type_evenement, 
-    Periode, 
-    SUM(MontantTotal) AS TotalMontant, 
-    SUM(NombreAchats) AS TotalAchats
+    Nom_Brawler, 
+    Niveau_Joueur, 
+    AVG(Taux_Victoire_Moyen) AS Taux_Victoire_Moyen, 
+    SUM(Total_Sessions) AS Total_Sessions
 FROM 
-    EventAndPromotionAnalysis
+    Vue_Perf_Personnages
+GROUP BY 
+    Nom_Brawler, Niveau_Joueur
+HAVING 
+    AVG(Taux_Victoire_Moyen) > 0.7 OR AVG(Taux_Victoire_Moyen) < 0.3
+ORDER BY 
+    Taux_Victoire_Moyen DESC;
+
+--requetes traitelent 4:
+SELECT 
+    Nom_Brawler, 
+    Annee, 
+    Mois, 
+    AVG(Taux_Victoire_Moyen) AS Taux_Victoire_Moyen
+FROM 
+    Vue_Perf_Personnages
 WHERE 
-    TypeEntite = 'Evenement'
+    Annee >= 2024
 GROUP BY 
-    IdEntite, TypeEntite, Periode
+    Nom_Brawler, Annee, Mois
 ORDER BY 
-    IdEntite, Periode;
+    Annee, Mois, Taux_Victoire_Moyen DESC;
 
---traitement 4
-SELECT 
-    IdJoueurs, 
-    TypeProduit AS TypeAchat, 
-    AVG(DATEDIFF(NOW(), DateAchats)) AS MoyenneIntervalleEntreAchats
-FROM 
-    AggregatedTransactions
-WHERE 
-    TypeProduit = 'Gemmes'
-GROUP BY 
-    IdJoueurs, TypeProduit
-ORDER BY 
-    MoyenneIntervalleEntreAchats ASC;
+--requetes traitelent 5:
 
---traitement 5
 SELECT 
-    IdEntite AS IdPromotion, 
-    TypeEntite AS TypeOffre, 
-    Periode, 
-    SUM(MontantTotal) AS MontantTotal, 
-    SUM(NombreAchats) AS NombreAchats
+    Nom_Brawler, 
+    Mode_Jeu, 
+    AVG(Taux_Victoire_Moyen) AS Taux_Victoire_Moyen, 
+    AVG(Degats_Moyens) AS Degats_Moyens
 FROM 
-    EventAndPromotionAnalysis
-WHERE 
-    TypeEntite = 'Promotion'
+    Vue_Perf_Personnages
 GROUP BY 
-    IdEntite, TypeEntite, Periode
+    Nom_Brawler, Mode_Jeu
+HAVING 
+    AVG(Taux_Victoire_Moyen) > 0.7 OR AVG(Taux_Victoire_Moyen) < 0.3
 ORDER BY 
-    Periode, MontantTotal DESC;
+    Taux_Victoire_Moyen DESC;
