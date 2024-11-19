@@ -139,9 +139,9 @@ FROM
 JOIN 
     Brawler B ON P.IdBrawler = B.IdBrawler
 JOIN 
-    v_Date VD ON P.IdDate = VD.IdDate  -- Utilisation de la vue v_Date ici
+    v_Date VD ON P.IdDate = VD.IdDate  
 GROUP BY 
-    B.Nom, VD.Saison  -- Utilisation de la colonne Saison de la vue v_Date
+    B.Nom, VD.Saison 
 ORDER BY 
     Total_Sessions DESC;
 
@@ -197,7 +197,7 @@ JOIN
 JOIN 
     v_Date D ON P.IdDate = D.IdDate
 WHERE 
-    D.Annee >= 2024 -- Supposons que les mises à jour ont commencé en 2024
+    D.Annee >= 2024 
 GROUP BY 
     B.Nom, D.Annee, D.Mois
 ORDER BY 

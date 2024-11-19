@@ -1,5 +1,8 @@
 
 /*
+-- Première version de vue mat qui couvre traitement 1 et 2
+
+
 -- Création de la vue matérialisée PerfPersonnage_Aggregats qui reproupe la requête 1 et 2 du traitement 1 et 2 de requetesPersonnage.sql
 CREATE MATERIALIZED VIEW PerfPersonnage_Aggregats AS
 SELECT 

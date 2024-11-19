@@ -33,7 +33,7 @@ DROP TABLE IF EXISTS NiveauJoueur;
 
 -- Dimension Joueurs
 CREATE TABLE Joueurs (
-    IdJoueurs SERIAL PRIMARY KEY,  -- SERIAL génère un auto-increment
+    IdJoueurs SERIAL PRIMARY KEY,  
     Age INTEGER,
     Region VARCHAR(50),
     Date_Inscription DATE,
@@ -55,7 +55,7 @@ CREATE TABLE Evenement (
 CREATE TABLE Produit (
     IdProduit SERIAL PRIMARY KEY,
     Nom_Produit VARCHAR(100),
-    Prix_unitaire NUMERIC(10, 2),  -- Prix unitaire avec 2 décimales
+    Prix_unitaire NUMERIC(10, 2),
     Categorie VARCHAR(50),
     Popularite INTEGER
 );

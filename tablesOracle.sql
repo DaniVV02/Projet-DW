@@ -180,7 +180,7 @@ CREATE TABLE Evenement (
 CREATE TABLE Produit (
    IdProduit NUMBER PRIMARY KEY,
    Nom_Produit VARCHAR2(100),
-   Prix_unitaire NUMBER(10, 2), -- Prix unitaire avec 2 décimales
+   Prix_unitaire NUMBER(10, 2),
    Categorie VARCHAR2(50),
    Popularite NUMBER
 );
@@ -241,7 +241,7 @@ CREATE TABLE Achats (
     IdSession_Achats NUMBER,
     IdTypeProduit NUMBER,
     IdTemps NUMBER,
-    Montant_achat NUMBER(10, 2), -- Montant total de l'achat
+    Montant_achat NUMBER(10, 2), 
     Nombre_achats INT,
     --Type_achat VARCHAR2(50),
     CONSTRAINT pk_achats PRIMARY KEY (IdProduit, IdJoueurs, IdEvenement, IdPromotion, IdDate, IdSession_Achats, IdTypeProduit, IdTemps),
