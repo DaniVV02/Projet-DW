@@ -222,7 +222,8 @@ INSERT INTO Session_Perf VALUES (6, 35, TO_DATE( '2022-07-03 17:05','YYYY-MM-DD 
 INSERT INTO Session_Perf VALUES (7, 55, TO_DATE( '2024-11-13 16:50','YYYY-MM-DD HH24:MI'),'Ladder',  40, 2, 300,0,500, 0);
 INSERT INTO Session_Perf VALUES (8, 25, TO_DATE( '2024-11-10 19:10', 'YYYY-MM-DD HH24:MI'),'Rank et Ladder',  15, 0, 50, 0, 180, 8);
 INSERT INTO Session_Perf VALUES (9, 40, TO_DATE( '2024-03-08 19:00', 'YYYY-MM-DD HH24:MI'),'Rank', 16, 0, 0, 0, 250,1220);
-INSERT INTO Session_Perf VALUES (10, 70 ,TO_DATE( '2024-11-13 21:00', 'YYYY-MM-DD HH24:MI'), 'Rank et Ladder', 60, 4, 160, 8, 1200, 1000);
+INSERT INTO Session_Perf VALUES (10, 70 ,TO_DATE( '2024-11-13 21:00', 'YYYY-MM-DD HH24:MI'), 'Rank et Ladder', 40, 4, 160, 8, 1200, 1000);
+INSERT INTO Session_Perf VALUES (11, 45, TO_DATE('2024-11-10 22:30','YYYY-MM-DD HH24:MI'), 'Rank', 20, 1,  0, 0, 0,1000);
 
 
 INSERT INTO Date_Perf VALUES (1, DATE '2021-01-01', 1, 01, 2021, 'Non', 'Hiver');
@@ -279,12 +280,12 @@ INSERT INTO PerfPersonnage VALUES (4, 1, 10, 4, 10, 1.0, 2, 50000, 0.16, 0.0, FA
 INSERT INTO PerfPersonnage VALUES (13, 1, 10, 2, 10, 0.9, 20, 1100000, 0.6, 0.0,FALSE); -- ok kenji session 10 brawl ball
 INSERT INTO PerfPersonnage VALUES (13, 1, 10, 4, 10, 1.0, 10, 550000, 0.6, 0.0,FALSE); -- ok kenji session 10 gem grab
 INSERT INTO PerfPersonnage VALUES (13, 1, 10, 9, 10, 1.0, 6, 250000, 1.0, 0.0,FALSE); -- session 10 rank pas banni
-INSERT INTO PerfPersonnage VALUES (13, 1, 10, 9, 10, NULL,NULL , NULL, NULL, 0.7,TRUE); -- ok kenji session 10 banni
-INSERT INTO PerfPersonnage VALUES (9, 1, 10, 9, 10, 0.14,14 , 100000, 0.28, 0.0,FALSE); -- ok amber session 10 quand kenji banni
+INSERT INTO PerfPersonnage VALUES (13, 1, 11, 9, 10, NULL,NULL , NULL, NULL, 0.7,TRUE); -- ok kenji session 11 banni
+INSERT INTO PerfPersonnage VALUES (9, 1, 11, 9, 10, 0.14,14 , 100000, 0.28, 0.0,FALSE); -- ok amber session 11 quand kenji banni
 
 
 
-INSERT INTO PerfPersonnage VALUES (9, 4, 9, 9, 8, 0.1, 12, 300000, 0.8, 0.0.FALSE); -- ok amber session 8
+INSERT INTO PerfPersonnage VALUES (9, 4, 9, 9, 8, 0.1, 12, 300000, 0.8, 0.0,FALSE); -- ok amber session 8
 INSERT INTO PerfPersonnage VALUES (11, 4, 9, 9, 8, 1.0, 4, 220000, 0.2, 0.0,FALSE); -- ok willow session 8
 
 
