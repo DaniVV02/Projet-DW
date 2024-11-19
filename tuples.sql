@@ -292,7 +292,7 @@ INSERT INTO PerfPersonnage VALUES (11, 4, 9, 9, 8, 1.0, 4, 220000, 0.2, 0.0,FALS
 
 INSERT INTO PerfPersonnage VALUES (12, 1, 7, 2, 10, 1.0, 30, 2400000, 0.75, 1.0, FALSE); --ok Larry session 7
 INSERT INTO PerfPersonnage VALUES (12, 1, 7, 9, 10, 1.0, 1, 60000, 1.0, 0.0, FALSE); --ok Larry session 7 rank
-INSERT INTO PerfPersonnage VALUES (12, 1, 14, 9, 10, NULL, NULL, NULL, NULL, 0.9, TRUE); --ok Larry session 7 banni
-INSERT INTO PerfPersonnage VALUES (9 ,1, 14, 9, 10, 0.5, 10, 280000, 1.0,0.0, FALSE); --ok Larry session 7 banni
+INSERT INTO PerfPersonnage VALUES (12, 1, 12, 9, 10, NULL, NULL, NULL, NULL, 0.9, TRUE); --ok Larry session 7 banni
+INSERT INTO PerfPersonnage VALUES (9 ,1, 12, 9, 10, 0.5, 10, 280000, 1.0,0.0, FALSE); --ok Larry session 7 banni
 
 
